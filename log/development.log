@@ -1,0 +1,2373 @@
+  [1m[35m (507.7ms)[0m  [1m[35mCREATE DATABASE "wings_order_form_development" ENCODING = 'unicode'[0m
+  [1m[35m (376.1ms)[0m  [1m[35mCREATE DATABASE "wings_order_form_test" ENCODING = 'unicode'[0m
+  [1m[35m (47.4ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (27.0ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(7796248672378347825)[0m
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateWingOrders (20151214002037)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (53.5ms)[0m  [1m[35mCREATE TABLE "wing_orders" ("id" serial NOT NULL PRIMARY KEY, "customer_name" character varying NOT NULL, "city" character varying NOT NULL, "state" character varying NOT NULL, "quantity" integer NOT NULL, "ranch_dressing" boolean DEFAULT FALSE NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (2.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20151214002037"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateFlavors (20151214003153)
+  [1m[35m (6.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (20.0ms)[0m  [1m[35mCREATE TABLE "flavors" ("id" serial NOT NULL PRIMARY KEY, "name" character varying NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20151214003153"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateOrderFlavors (20151214003528)
+  [1m[35m (6.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (13.5ms)[0m  [1m[35mCREATE TABLE "order_flavors" ("id" serial NOT NULL PRIMARY KEY, "wing_order_id" integer NOT NULL, "flavor_id" integer NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20151214003528"]]
+  [1m[35m (5.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (6.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (1.6ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2019-04-17 12:48:17.676624"], ["updated_at", "2019-04-17 12:48:17.676624"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(7796248672378347825)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(7796248672378347825)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateOrderFlavors (20151214003528)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (25.8ms)[0m  [1m[35mDROP TABLE "order_flavors"[0m
+  [1m[36mActiveRecord::SchemaMigration Destroy (1.5ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = $1[0m  [["version", "20151214003528"]]
+  [1m[35m (2.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_advisory_unlock(7796248672378347825)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(7796248672378347825)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateOrderFlavors (20151214003528)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.4ms)[0m  [1m[35mCREATE TABLE "order_flavors" ("id" serial NOT NULL PRIMARY KEY, "wing_order_id" integer NOT NULL, "flavor_id" integer NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20151214003528"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.7ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(7796248672378347825)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mFlavor Load (0.5ms)[0m  [1m[34mSELECT  "flavors".* FROM "flavors" WHERE "flavors"."name" = $1 LIMIT $2[0m  [["name", "BBQ"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFlavor Create (7.3ms)[0m  [1m[32mINSERT INTO "flavors" ("name") VALUES ($1) RETURNING "id"[0m  [["name", "BBQ"]]
+  [1m[35m (5.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mFlavor Load (0.4ms)[0m  [1m[34mSELECT  "flavors".* FROM "flavors" WHERE "flavors"."name" = $1 LIMIT $2[0m  [["name", "Honey BBQ"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFlavor Create (0.3ms)[0m  [1m[32mINSERT INTO "flavors" ("name") VALUES ($1) RETURNING "id"[0m  [["name", "Honey BBQ"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mFlavor Load (0.2ms)[0m  [1m[34mSELECT  "flavors".* FROM "flavors" WHERE "flavors"."name" = $1 LIMIT $2[0m  [["name", "Sweet Chili"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFlavor Create (0.2ms)[0m  [1m[32mINSERT INTO "flavors" ("name") VALUES ($1) RETURNING "id"[0m  [["name", "Sweet Chili"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mFlavor Load (0.2ms)[0m  [1m[34mSELECT  "flavors".* FROM "flavors" WHERE "flavors"."name" = $1 LIMIT $2[0m  [["name", "Buffalo"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFlavor Create (0.2ms)[0m  [1m[32mINSERT INTO "flavors" ("name") VALUES ($1) RETURNING "id"[0m  [["name", "Buffalo"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/" for 127.0.0.1 at 2019-04-17 08:55:23 -0400
+  [1m[35m (7.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by WingOrdersController#index as HTML
+  Rendering wing_orders/index.html.erb within layouts/application
+  [1m[36mWingOrder Load (2.3ms)[0m  [1m[34mSELECT "wing_orders".* FROM "wing_orders"[0m
+  Rendered wing_orders/index.html.erb within layouts/application (8.7ms)
+Completed 200 OK in 4758ms (Views: 4740.8ms | ActiveRecord: 3.6ms)
+
+
+Started GET "/wing_orders/new" for 127.0.0.1 at 2019-04-17 08:55:30 -0400
+Processing by WingOrdersController#new as HTML
+  Rendering wing_orders/new.html.erb within layouts/application
+  [1m[36mFlavor Load (0.6ms)[0m  [1m[34mSELECT "flavors".* FROM "flavors"[0m
+  Rendered wing_orders/new.html.erb within layouts/application (8.1ms)
+Completed 200 OK in 59ms (Views: 43.1ms | ActiveRecord: 6.9ms)
+
+
+Started GET "/wing_orders/new" for 127.0.0.1 at 2019-04-17 11:01:23 -0400
+  [1m[35m (5.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by WingOrdersController#new as HTML
+  Rendering wing_orders/new.html.erb within layouts/application
+  Rendered wing_orders/new.html.erb within layouts/application (5.2ms)
+Completed 500 Internal Server Error in 42ms (ActiveRecord: 4.8ms)
+
+
+  
+ActionView::Template::Error (First argument in form cannot contain nil or be empty):
+    1: 
+    2: <h1>New Wing Order</h1>
+    3: <% form_for(@wing_oder) do |f|%>
+    4: <%= f.text %>
+    5:   <%=f.label :customer_name  %>
+    6:   <%=f.text_area :customer_name  %>
+  
+app/views/wing_orders/new.html.erb:3:in `_app_views_wing_orders_new_html_erb___1806857752579629097_70244200486920'
+Started GET "/wing_orders/new" for 127.0.0.1 at 2019-04-17 11:01:32 -0400
+Processing by WingOrdersController#new as HTML
+  Rendering wing_orders/new.html.erb within layouts/application
+  [1m[36mFlavor Load (0.7ms)[0m  [1m[34mSELECT  "flavors".* FROM "flavors" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Flavor Load (0.0ms)[0m  [1m[34mSELECT  "flavors".* FROM "flavors" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Flavor Load (0.0ms)[0m  [1m[34mSELECT  "flavors".* FROM "flavors" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Flavor Load (0.0ms)[0m  [1m[34mSELECT  "flavors".* FROM "flavors" LIMIT $1[0m  [["LIMIT", 11]]
+  Rendered wing_orders/new.html.erb within layouts/application (106.1ms)
+Completed 500 Internal Server Error in 112ms (ActiveRecord: 5.9ms)
+
+
+  
+ActionView::Template::Error (undefined method `text' for #<ActionView::Helpers::FormBuilder:0x007fc601432e10>):
+    1: 
+    2: <h1>New Wing Order</h1>
+    3: <% form_for(@wing_order) do |f|%>
+    4: <%= f.text %>
+    5:   <%=f.label :customer_name  %>
+    6:   <%=f.text_area :customer_name  %>
+    7: <% end %>
+  
+app/views/wing_orders/new.html.erb:4:in `block in _app_views_wing_orders_new_html_erb___1806857752579629097_70244184670540'
+app/views/wing_orders/new.html.erb:3:in `_app_views_wing_orders_new_html_erb___1806857752579629097_70244184670540'
+Started GET "/wing_orders/new" for 127.0.0.1 at 2019-04-17 11:01:40 -0400
+Processing by WingOrdersController#new as HTML
+  Rendering wing_orders/new.html.erb within layouts/application
+  Rendered wing_orders/new.html.erb within layouts/application (20.5ms)
+Completed 200 OK in 353ms (Views: 351.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/wing_orders/new" for 127.0.0.1 at 2019-04-17 11:01:42 -0400
+Processing by WingOrdersController#new as HTML
+  Rendering wing_orders/new.html.erb within layouts/application
+  Rendered wing_orders/new.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 65ms (Views: 62.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/wing_orders/new" for 127.0.0.1 at 2019-04-17 11:02:12 -0400
+Processing by WingOrdersController#new as HTML
+  Rendering wing_orders/new.html.erb within layouts/application
+  Rendered wing_orders/new.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 84ms (Views: 81.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/wing_orders/new" for 127.0.0.1 at 2019-04-17 11:02:15 -0400
+Processing by WingOrdersController#new as HTML
+  Rendering wing_orders/new.html.erb within layouts/application
+  Rendered wing_orders/new.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 49ms (Views: 47.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/wing_orders/new" for 127.0.0.1 at 2019-04-17 11:05:08 -0400
+Processing by WingOrdersController#new as HTML
+  Rendering wing_orders/new.html.erb within layouts/application
+  Rendered wing_orders/new.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 171ms (Views: 168.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/wing_orders/new" for 127.0.0.1 at 2019-04-17 11:05:15 -0400
+Processing by WingOrdersController#new as HTML
+  Rendering wing_orders/new.html.erb within layouts/application
+  Rendered wing_orders/new.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 51ms (Views: 49.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/wing_orders/new" for 127.0.0.1 at 2019-04-17 11:05:17 -0400
+Processing by WingOrdersController#new as HTML
+  Rendering wing_orders/new.html.erb within layouts/application
+  Rendered wing_orders/new.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 44ms (Views: 42.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/wing_orders/new" for 127.0.0.1 at 2019-04-17 11:06:33 -0400
+Processing by WingOrdersController#new as HTML
+  Rendering wing_orders/new.html.erb within layouts/application
+  Rendered wing_orders/new.html.erb within layouts/application (1.1ms)
+Completed 500 Internal Server Error in 8ms (ActiveRecord: 0.0ms)
+
+
+  
+SyntaxError (/Users/arkhamsrazor/challenges/Playground/wings-order-form/app/views/wing_orders/new.html.erb:8: syntax error, unexpected '<', expecting ')'
+  <%=f.label :city  );@output_buffer.safe_append='
+   ^
+/Users/arkhamsrazor/challenges/Playground/wings-order-form/app/views/wing_orders/new.html.erb:15: syntax error, unexpected keyword_end, expecting ')'
+'.freeze; end 
+             ^
+/Users/arkhamsrazor/challenges/Playground/wings-order-form/app/views/wing_orders/new.html.erb:17: syntax error, unexpected keyword_ensure, expecting ')'
+/Users/arkhamsrazor/challenges/Playground/wings-order-form/app/views/wing_orders/new.html.erb:19: syntax error, unexpected keyword_end, expecting ')'):
+  
+app/views/wing_orders/new.html.erb:8: syntax error, unexpected '<', expecting ')'
+app/views/wing_orders/new.html.erb:15: syntax error, unexpected keyword_end, expecting ')'
+app/views/wing_orders/new.html.erb:17: syntax error, unexpected keyword_ensure, expecting ')'
+app/views/wing_orders/new.html.erb:19: syntax error, unexpected keyword_end, expecting ')'
+Started GET "/wing_orders/new" for 127.0.0.1 at 2019-04-17 11:06:34 -0400
+Processing by WingOrdersController#new as HTML
+  Rendering wing_orders/new.html.erb within layouts/application
+  Rendered wing_orders/new.html.erb within layouts/application (0.6ms)
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 0.0ms)
+
+
+  
+SyntaxError (/Users/arkhamsrazor/challenges/Playground/wings-order-form/app/views/wing_orders/new.html.erb:8: syntax error, unexpected '<', expecting ')'
+  <%=f.label :city  );@output_buffer.safe_append='
+   ^
+/Users/arkhamsrazor/challenges/Playground/wings-order-form/app/views/wing_orders/new.html.erb:15: syntax error, unexpected keyword_end, expecting ')'
+'.freeze; end 
+             ^
+/Users/arkhamsrazor/challenges/Playground/wings-order-form/app/views/wing_orders/new.html.erb:17: syntax error, unexpected keyword_ensure, expecting ')'
+/Users/arkhamsrazor/challenges/Playground/wings-order-form/app/views/wing_orders/new.html.erb:19: syntax error, unexpected keyword_end, expecting ')'):
+  
+app/views/wing_orders/new.html.erb:8: syntax error, unexpected '<', expecting ')'
+app/views/wing_orders/new.html.erb:15: syntax error, unexpected keyword_end, expecting ')'
+app/views/wing_orders/new.html.erb:17: syntax error, unexpected keyword_ensure, expecting ')'
+app/views/wing_orders/new.html.erb:19: syntax error, unexpected keyword_end, expecting ')'
+Started GET "/wing_orders/new" for 127.0.0.1 at 2019-04-17 11:06:41 -0400
+Processing by WingOrdersController#new as HTML
+  Rendering wing_orders/new.html.erb within layouts/application
+  Rendered wing_orders/new.html.erb within layouts/application (2.7ms)
+Completed 200 OK in 57ms (Views: 55.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/wing_orders/new" for 127.0.0.1 at 2019-04-17 11:08:34 -0400
+Processing by WingOrdersController#new as HTML
+  Rendering wing_orders/new.html.erb within layouts/application
+  Rendered wing_orders/new.html.erb within layouts/application (6.7ms)
+Completed 500 Internal Server Error in 17ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `map' for nil:NilClass
+Did you mean?  tap):
+     8:   <%=f.label :city  %>
+     9:   <%=f.text_area :city  %>
+    10: 
+    11:   <%=f.select :state  %>
+    12:   <%=f.select_from_collection :state_array  %>
+    13: 
+    14:   <%= %>
+  
+app/views/wing_orders/new.html.erb:11:in `block in _app_views_wing_orders_new_html_erb___1806857752579629097_70244176351480'
+app/views/wing_orders/new.html.erb:3:in `_app_views_wing_orders_new_html_erb___1806857752579629097_70244176351480'
+Started GET "/wing_orders/new" for 127.0.0.1 at 2019-04-17 11:08:43 -0400
+Processing by WingOrdersController#new as HTML
+  Rendering wing_orders/new.html.erb within layouts/application
+  [1m[36mFlavor Load (0.6ms)[0m  [1m[34mSELECT  "flavors".* FROM "flavors" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Flavor Load (0.0ms)[0m  [1m[34mSELECT  "flavors".* FROM "flavors" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Flavor Load (0.0ms)[0m  [1m[34mSELECT  "flavors".* FROM "flavors" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Flavor Load (0.0ms)[0m  [1m[34mSELECT  "flavors".* FROM "flavors" LIMIT $1[0m  [["LIMIT", 11]]
+  Rendered wing_orders/new.html.erb within layouts/application (114.2ms)
+Completed 500 Internal Server Error in 121ms (ActiveRecord: 0.7ms)
+
+
+  
+ActionView::Template::Error (undefined method `select_from_collection' for #<ActionView::Helpers::FormBuilder:0x007fc5feccf0a8>):
+     9:   <%=f.text_area :city  %>
+    10: 
+    11:   <%=f.label :state  %>
+    12:   <%=f.select_from_collection :state_array  %>
+    13: 
+    14:   <%= %>
+    15: 
+  
+app/views/wing_orders/new.html.erb:12:in `block in _app_views_wing_orders_new_html_erb___1806857752579629097_70244229442420'
+app/views/wing_orders/new.html.erb:3:in `_app_views_wing_orders_new_html_erb___1806857752579629097_70244229442420'
+Started GET "/wing_orders/new" for 127.0.0.1 at 2019-04-17 11:08:54 -0400
+Processing by WingOrdersController#new as HTML
+  Rendering wing_orders/new.html.erb within layouts/application
+  Rendered wing_orders/new.html.erb within layouts/application (16.4ms)
+Completed 500 Internal Server Error in 28ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `state_array' for #<WingOrder:0x007fc5ff682488>
+Did you mean?  state_was):
+     9:   <%=f.text_area :city  %>
+    10: 
+    11:   <%=f.label :state  %>
+    12:   <%=f.select :state_array  %>
+    13: 
+    14:   <%= %>
+    15: 
+  
+app/views/wing_orders/new.html.erb:12:in `block in _app_views_wing_orders_new_html_erb___1806857752579629097_70244185241420'
+app/views/wing_orders/new.html.erb:3:in `_app_views_wing_orders_new_html_erb___1806857752579629097_70244185241420'
+Started GET "/wing_orders/new" for 127.0.0.1 at 2019-04-17 11:12:57 -0400
+Processing by WingOrdersController#new as HTML
+  Rendering wing_orders/new.html.erb within layouts/application
+  Rendered wing_orders/new.html.erb within layouts/application (13.7ms)
+Completed 500 Internal Server Error in 34ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (wrong number of arguments (given 1, expected 4..6)):
+     9:   <%=f.text_area :city  %>
+    10: 
+    11:   <%=f.label :state  %>
+    12:   <%=f.collection_select(:state_array)  %>
+    13: 
+    14: 
+    15: <% end %>
+  
+app/views/wing_orders/new.html.erb:12:in `block in _app_views_wing_orders_new_html_erb___1806857752579629097_70244225606960'
+app/views/wing_orders/new.html.erb:3:in `_app_views_wing_orders_new_html_erb___1806857752579629097_70244225606960'
+Started GET "/wing_orders/new" for 127.0.0.1 at 2019-04-17 11:13:31 -0400
+Processing by WingOrdersController#new as HTML
+  Rendering wing_orders/new.html.erb within layouts/application
+  Rendered wing_orders/new.html.erb within layouts/application (3.0ms)
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (wrong number of arguments (given 2, expected 4..6)):
+     9:   <%=f.text_area :city  %>
+    10: 
+    11:   <%=f.label :state  %>
+    12:   <%=f.collection_select(:state, @state_array)  %>
+    13: 
+    14: 
+    15: <% end %>
+  
+app/views/wing_orders/new.html.erb:12:in `block in _app_views_wing_orders_new_html_erb___1806857752579629097_70244232139760'
+app/views/wing_orders/new.html.erb:3:in `_app_views_wing_orders_new_html_erb___1806857752579629097_70244232139760'
+Started GET "/wing_orders/new" for 127.0.0.1 at 2019-04-17 11:13:42 -0400
+Processing by WingOrdersController#new as HTML
+  Rendering wing_orders/new.html.erb within layouts/application
+  Rendered wing_orders/new.html.erb within layouts/application (9.8ms)
+Completed 500 Internal Server Error in 20ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `map' for nil:NilClass
+Did you mean?  tap):
+     9:   <%=f.text_area :city  %>
+    10: 
+    11:   <%=f.label :state  %>
+    12:   <%=f.collection_select(:state, @state_array, :state, :state)  %>
+    13: 
+    14: 
+    15: <% end %>
+  
+app/views/wing_orders/new.html.erb:12:in `block in _app_views_wing_orders_new_html_erb___1806857752579629097_70244176563820'
+app/views/wing_orders/new.html.erb:3:in `_app_views_wing_orders_new_html_erb___1806857752579629097_70244176563820'
+Started GET "/wing_orders/new" for 127.0.0.1 at 2019-04-17 11:13:44 -0400
+Processing by WingOrdersController#new as HTML
+  Rendering wing_orders/new.html.erb within layouts/application
+  Rendered wing_orders/new.html.erb within layouts/application (3.2ms)
+Completed 500 Internal Server Error in 9ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `map' for nil:NilClass
+Did you mean?  tap):
+     9:   <%=f.text_area :city  %>
+    10: 
+    11:   <%=f.label :state  %>
+    12:   <%=f.collection_select(:state, @state_array, :state, :state)  %>
+    13: 
+    14: 
+    15: <% end %>
+  
+app/views/wing_orders/new.html.erb:12:in `block in _app_views_wing_orders_new_html_erb___1806857752579629097_70244224710580'
+app/views/wing_orders/new.html.erb:3:in `_app_views_wing_orders_new_html_erb___1806857752579629097_70244224710580'
+Started GET "/wing_orders/new" for 127.0.0.1 at 2019-04-17 11:14:45 -0400
+Processing by WingOrdersController#new as HTML
+  Rendering wing_orders/new.html.erb within layouts/application
+  [1m[36mFlavor Load (0.4ms)[0m  [1m[34mSELECT  "flavors".* FROM "flavors" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Flavor Load (0.0ms)[0m  [1m[34mSELECT  "flavors".* FROM "flavors" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Flavor Load (0.0ms)[0m  [1m[34mSELECT  "flavors".* FROM "flavors" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Flavor Load (0.0ms)[0m  [1m[34mSELECT  "flavors".* FROM "flavors" LIMIT $1[0m  [["LIMIT", 11]]
+  Rendered wing_orders/new.html.erb within layouts/application (131.1ms)
+Completed 500 Internal Server Error in 138ms (ActiveRecord: 0.5ms)
+
+
+  
+ActionView::Template::Error (undefined method `options_for_select' for #<ActionView::Helpers::FormBuilder:0x007fc5fde54910>):
+     9:   <%=f.text_area :city  %>
+    10: 
+    11:   <%=f.label :state  %>
+    12:   <%=f.options_for_select(:state, @state_array, :state, :state)  %>
+    13: 
+    14: 
+    15: <% end %>
+  
+app/views/wing_orders/new.html.erb:12:in `block in _app_views_wing_orders_new_html_erb___1806857752579629097_70244172954200'
+app/views/wing_orders/new.html.erb:3:in `_app_views_wing_orders_new_html_erb___1806857752579629097_70244172954200'
+Started GET "/wing_orders/new" for 127.0.0.1 at 2019-04-17 11:14:46 -0400
+Processing by WingOrdersController#new as HTML
+  Rendering wing_orders/new.html.erb within layouts/application
+  [1m[36mFlavor Load (0.4ms)[0m  [1m[34mSELECT  "flavors".* FROM "flavors" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Flavor Load (0.0ms)[0m  [1m[34mSELECT  "flavors".* FROM "flavors" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Flavor Load (0.0ms)[0m  [1m[34mSELECT  "flavors".* FROM "flavors" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Flavor Load (0.0ms)[0m  [1m[34mSELECT  "flavors".* FROM "flavors" LIMIT $1[0m  [["LIMIT", 11]]
+  Rendered wing_orders/new.html.erb within layouts/application (101.6ms)
+Completed 500 Internal Server Error in 108ms (ActiveRecord: 0.5ms)
+
+
+  
+ActionView::Template::Error (undefined method `options_for_select' for #<ActionView::Helpers::FormBuilder:0x007fc5ff60ee70>):
+     9:   <%=f.text_area :city  %>
+    10: 
+    11:   <%=f.label :state  %>
+    12:   <%=f.options_for_select(:state, @state_array, :state, :state)  %>
+    13: 
+    14: 
+    15: <% end %>
+  
+app/views/wing_orders/new.html.erb:12:in `block in _app_views_wing_orders_new_html_erb___1806857752579629097_70244185023800'
+app/views/wing_orders/new.html.erb:3:in `_app_views_wing_orders_new_html_erb___1806857752579629097_70244185023800'
+Started GET "/wing_orders/new" for 127.0.0.1 at 2019-04-17 11:15:07 -0400
+Processing by WingOrdersController#new as HTML
+  Rendering wing_orders/new.html.erb within layouts/application
+  [1m[36mFlavor Load (6.0ms)[0m  [1m[34mSELECT  "flavors".* FROM "flavors" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Flavor Load (0.0ms)[0m  [1m[34mSELECT  "flavors".* FROM "flavors" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Flavor Load (0.0ms)[0m  [1m[34mSELECT  "flavors".* FROM "flavors" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Flavor Load (0.0ms)[0m  [1m[34mSELECT  "flavors".* FROM "flavors" LIMIT $1[0m  [["LIMIT", 11]]
+  Rendered wing_orders/new.html.erb within layouts/application (134.2ms)
+Completed 500 Internal Server Error in 142ms (ActiveRecord: 6.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `options_for_select' for #<ActionView::Helpers::FormBuilder:0x007fc604a2d3a8>):
+     9:   <%=f.text_area :city  %>
+    10: 
+    11:   <%=f.label :state  %>
+    12:   <%=f.options_for_select(@state_array, :state)  %>
+    13: 
+    14: 
+    15: <% end %>
+  
+app/views/wing_orders/new.html.erb:12:in `block in _app_views_wing_orders_new_html_erb___1806857752579629097_70244228899100'
+app/views/wing_orders/new.html.erb:3:in `_app_views_wing_orders_new_html_erb___1806857752579629097_70244228899100'
+Started GET "/wing_orders/new" for 127.0.0.1 at 2019-04-17 11:15:29 -0400
+Processing by WingOrdersController#new as HTML
+  Rendering wing_orders/new.html.erb within layouts/application
+  Rendered wing_orders/new.html.erb within layouts/application (0.8ms)
+Completed 500 Internal Server Error in 8ms (ActiveRecord: 0.0ms)
+
+
+  
+SyntaxError (/Users/arkhamsrazor/challenges/Playground/wings-order-form/app/views/wing_orders/new.html.erb:12: syntax error, unexpected '(', expecting ')'
+...=(f.select :options_for_select(@state_array, :state)  );@out...
+...                               ^
+/Users/arkhamsrazor/challenges/Playground/wings-order-form/app/views/wing_orders/new.html.erb:12: syntax error, unexpected ')', expecting &. or :: or '[' or '.'
+...or_select(@state_array, :state)  );@output_buffer.safe_appen...
+...                               ^
+/Users/arkhamsrazor/challenges/Playground/wings-order-form/app/views/wing_orders/new.html.erb:15: syntax error, unexpected keyword_end, expecting ')'
+'.freeze; end 
+             ^
+/Users/arkhamsrazor/challenges/Playground/wings-order-form/app/views/wing_orders/new.html.erb:17: syntax error, unexpected keyword_ensure, expecting ')'
+/Users/arkhamsrazor/challenges/Playground/wings-order-form/app/views/wing_orders/new.html.erb:19: syntax error, unexpected keyword_end, expecting ')'):
+  
+app/views/wing_orders/new.html.erb:12: syntax error, unexpected '(', expecting ')'
+app/views/wing_orders/new.html.erb:12: syntax error, unexpected ')', expecting &. or :: or '[' or '.'
+app/views/wing_orders/new.html.erb:15: syntax error, unexpected keyword_end, expecting ')'
+app/views/wing_orders/new.html.erb:17: syntax error, unexpected keyword_ensure, expecting ')'
+app/views/wing_orders/new.html.erb:19: syntax error, unexpected keyword_end, expecting ')'
+Started GET "/wing_orders/new" for 127.0.0.1 at 2019-04-17 11:16:03 -0400
+Processing by WingOrdersController#new as HTML
+  Rendering wing_orders/new.html.erb within layouts/application
+  Rendered wing_orders/new.html.erb within layouts/application (0.9ms)
+Completed 500 Internal Server Error in 16ms (ActiveRecord: 0.0ms)
+
+
+  
+SyntaxError (/Users/arkhamsrazor/challenges/Playground/wings-order-form/app/views/wing_orders/new.html.erb:12: syntax error, unexpected '(', expecting ')'
+...=(f.select :options_for_select(@state_array)  );@output_buff...
+...                               ^):
+  
+app/views/wing_orders/new.html.erb:12: syntax error, unexpected '(', expecting ')'
+Started GET "/wing_orders/new" for 127.0.0.1 at 2019-04-17 11:16:04 -0400
+Processing by WingOrdersController#new as HTML
+  Rendering wing_orders/new.html.erb within layouts/application
+  Rendered wing_orders/new.html.erb within layouts/application (0.6ms)
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.0ms)
+
+
+  
+SyntaxError (/Users/arkhamsrazor/challenges/Playground/wings-order-form/app/views/wing_orders/new.html.erb:12: syntax error, unexpected '(', expecting ')'
+...=(f.select :options_for_select(@state_array)  );@output_buff...
+...                               ^):
+  
+app/views/wing_orders/new.html.erb:12: syntax error, unexpected '(', expecting ')'
+Started GET "/wing_orders/new" for 127.0.0.1 at 2019-04-17 11:16:17 -0400
+Processing by WingOrdersController#new as HTML
+  Rendering wing_orders/new.html.erb within layouts/application
+  Rendered wing_orders/new.html.erb within layouts/application (1.1ms)
+Completed 500 Internal Server Error in 8ms (ActiveRecord: 0.0ms)
+
+
+  
+SyntaxError (/Users/arkhamsrazor/challenges/Playground/wings-order-form/app/views/wing_orders/new.html.erb:12: syntax error, unexpected '(', expecting &. or :: or '[' or '.'
+...(f.select, :options_for_select(@state_array)  );@output_buff...
+...                               ^):
+  
+app/views/wing_orders/new.html.erb:12: syntax error, unexpected '(', expecting &. or :: or '[' or '.'
+Started GET "/wing_orders/new" for 127.0.0.1 at 2019-04-17 11:16:43 -0400
+Processing by WingOrdersController#new as HTML
+  Rendering wing_orders/new.html.erb within layouts/application
+  Rendered wing_orders/new.html.erb within layouts/application (0.5ms)
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 0.0ms)
+
+
+  
+SyntaxError (/Users/arkhamsrazor/challenges/Playground/wings-order-form/app/views/wing_orders/new.html.erb:12: syntax error, unexpected '(', expecting ')'
+...ct :state, :options_for_select(@state_array)  );@output_buff...
+...                               ^):
+  
+app/views/wing_orders/new.html.erb:12: syntax error, unexpected '(', expecting ')'
+Started GET "/wing_orders/new" for 127.0.0.1 at 2019-04-17 11:16:48 -0400
+Processing by WingOrdersController#new as HTML
+  Rendering wing_orders/new.html.erb within layouts/application
+  Rendered wing_orders/new.html.erb within layouts/application (4.3ms)
+Completed 500 Internal Server Error in 16ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `map' for nil:NilClass
+Did you mean?  tap):
+     9:   <%=f.text_area :city  %>
+    10: 
+    11:   <%=f.label :state  %>
+    12:   <%=f.select :state, options_for_select(@state_array)  %>
+    13: 
+    14: 
+    15: <% end %>
+  
+app/views/wing_orders/new.html.erb:12:in `block in _app_views_wing_orders_new_html_erb___1806857752579629097_70244178803000'
+app/views/wing_orders/new.html.erb:3:in `_app_views_wing_orders_new_html_erb___1806857752579629097_70244178803000'
+Started GET "/wing_orders/new" for 127.0.0.1 at 2019-04-17 11:16:49 -0400
+Processing by WingOrdersController#new as HTML
+  Rendering wing_orders/new.html.erb within layouts/application
+  Rendered wing_orders/new.html.erb within layouts/application (2.7ms)
+Completed 500 Internal Server Error in 8ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `map' for nil:NilClass
+Did you mean?  tap):
+     9:   <%=f.text_area :city  %>
+    10: 
+    11:   <%=f.label :state  %>
+    12:   <%=f.select :state, options_for_select(@state_array)  %>
+    13: 
+    14: 
+    15: <% end %>
+  
+app/views/wing_orders/new.html.erb:12:in `block in _app_views_wing_orders_new_html_erb___1806857752579629097_70244224090140'
+app/views/wing_orders/new.html.erb:3:in `_app_views_wing_orders_new_html_erb___1806857752579629097_70244224090140'
+Started GET "/wing_orders/new" for 127.0.0.1 at 2019-04-17 11:17:04 -0400
+Processing by WingOrdersController#new as HTML
+  Rendering wing_orders/new.html.erb within layouts/application
+  Rendered wing_orders/new.html.erb within layouts/application (44697.7ms)
+Completed 500 Internal Server Error in 44708ms (ActiveRecord: 0.0ms)
+
+
+  
+SystemExit (exit):
+  
+app/views/wing_orders/new.html.erb:12:in `block in _app_views_wing_orders_new_html_erb___1806857752579629097_70244229935040'
+app/views/wing_orders/new.html.erb:3:in `_app_views_wing_orders_new_html_erb___1806857752579629097_70244229935040'
+Started GET "/wing_orders/new" for 127.0.0.1 at 2019-04-17 11:17:51 -0400
+Processing by WingOrdersController#new as HTML
+  Rendering wing_orders/new.html.erb within layouts/application
+Started GET "/wing_orders/new" for 127.0.0.1 at 2019-04-17 11:18:40 -0400
+  Rendered wing_orders/new.html.erb within layouts/application (27009.0ms)
+Completed 500 Internal Server Error in 50742ms (ActiveRecord: 6.1ms)
+
+
+  
+SystemExit (exit):
+  
+app/views/wing_orders/new.html.erb:12:in `block in _app_views_wing_orders_new_html_erb___1806857752579629097_70244229110240'
+app/views/wing_orders/new.html.erb:3:in `_app_views_wing_orders_new_html_erb___1806857752579629097_70244229110240'
+Processing by WingOrdersController#new as HTML
+Completed 500 Internal Server Error in 2011ms (ActiveRecord: 3.1ms)
+
+
+  
+SystemExit (exit):
+  
+app/controllers/wing_orders_controller.rb:11:in `new'
+Started GET "/wing_orders/new" for 127.0.0.1 at 2019-04-17 11:18:50 -0400
+Processing by WingOrdersController#new as HTML
+Completed 500 Internal Server Error in 10285ms (ActiveRecord: 0.0ms)
+
+
+  
+SystemExit (exit):
+  
+app/controllers/wing_orders_controller.rb:11:in `new'
+Started GET "/wing_orders/new" for 127.0.0.1 at 2019-04-17 11:19:03 -0400
+Processing by WingOrdersController#new as HTML
+  Rendering wing_orders/new.html.erb within layouts/application
+  Rendered wing_orders/new.html.erb within layouts/application (5.2ms)
+Completed 200 OK in 94ms (Views: 65.5ms | ActiveRecord: 3.5ms)
+
+
+Started GET "/wing_orders/new" for 127.0.0.1 at 2019-04-17 11:25:26 -0400
+Processing by WingOrdersController#new as HTML
+  Rendering wing_orders/new.html.erb within layouts/application
+  Rendered wing_orders/new.html.erb within layouts/application (3.7ms)
+Completed 500 Internal Server Error in 9ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (wrong number of arguments (given 3, expected 4..6)):
+    12:   <%=f.select :state, options_for_select(@state_collection)  %>
+    13: 
+    14:   <%= f.label :quantity %>
+    15:   <%= f.collection_radio_buttons(@quantity_collection,:quantity, :quantity, ) %>
+    16: 
+    17: <% end %>
+  
+app/views/wing_orders/new.html.erb:15:in `block in _app_views_wing_orders_new_html_erb___1806857752579629097_70244243737300'
+app/views/wing_orders/new.html.erb:3:in `_app_views_wing_orders_new_html_erb___1806857752579629097_70244243737300'
+Started GET "/wing_orders/new" for 127.0.0.1 at 2019-04-17 11:25:28 -0400
+Processing by WingOrdersController#new as HTML
+  Rendering wing_orders/new.html.erb within layouts/application
+  Rendered wing_orders/new.html.erb within layouts/application (2.7ms)
+Completed 500 Internal Server Error in 8ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (wrong number of arguments (given 3, expected 4..6)):
+    12:   <%=f.select :state, options_for_select(@state_collection)  %>
+    13: 
+    14:   <%= f.label :quantity %>
+    15:   <%= f.collection_radio_buttons(@quantity_collection,:quantity, :quantity, ) %>
+    16: 
+    17: <% end %>
+  
+app/views/wing_orders/new.html.erb:15:in `block in _app_views_wing_orders_new_html_erb___1806857752579629097_70244242235240'
+app/views/wing_orders/new.html.erb:3:in `_app_views_wing_orders_new_html_erb___1806857752579629097_70244242235240'
+Started GET "/wing_orders/new" for 127.0.0.1 at 2019-04-17 11:25:37 -0400
+Processing by WingOrdersController#new as HTML
+  Rendering wing_orders/new.html.erb within layouts/application
+  Rendered wing_orders/new.html.erb within layouts/application (15.1ms)
+Completed 500 Internal Server Error in 22ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `quantity' for [10, "10 wings"]:Array):
+    12:   <%=f.select :state, options_for_select(@state_collection)  %>
+    13: 
+    14:   <%= f.label :quantity %>
+    15:   <%= f.collection_radio_buttons(:quantity,@quantity_collection,:quantity, :quantity, ) %>
+    16: 
+    17: <% end %>
+  
+app/views/wing_orders/new.html.erb:15:in `block in _app_views_wing_orders_new_html_erb___1806857752579629097_70244180290360'
+app/views/wing_orders/new.html.erb:3:in `_app_views_wing_orders_new_html_erb___1806857752579629097_70244180290360'
+Started GET "/wing_orders/new" for 127.0.0.1 at 2019-04-17 11:26:06 -0400
+Processing by WingOrdersController#new as HTML
+  Rendering wing_orders/new.html.erb within layouts/application
+  Rendered wing_orders/new.html.erb within layouts/application (4.1ms)
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `id' for [10, "10 wings"]:Array):
+    12:   <%=f.select :state, options_for_select(@state_collection)  %>
+    13: 
+    14:   <%= f.label :quantity %>
+    15:   <%= f.collection_radio_buttons(:quantity,@quantity_collection,:id, :value, ) %>
+    16: 
+    17: <% end %>
+  
+app/views/wing_orders/new.html.erb:15:in `block in _app_views_wing_orders_new_html_erb___1806857752579629097_70244182888540'
+app/views/wing_orders/new.html.erb:3:in `_app_views_wing_orders_new_html_erb___1806857752579629097_70244182888540'
+Started GET "/wing_orders/new" for 127.0.0.1 at 2019-04-17 11:26:08 -0400
+Processing by WingOrdersController#new as HTML
+  Rendering wing_orders/new.html.erb within layouts/application
+  Rendered wing_orders/new.html.erb within layouts/application (3.9ms)
+Completed 500 Internal Server Error in 9ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `id' for [10, "10 wings"]:Array):
+    12:   <%=f.select :state, options_for_select(@state_collection)  %>
+    13: 
+    14:   <%= f.label :quantity %>
+    15:   <%= f.collection_radio_buttons(:quantity,@quantity_collection,:id, :value, ) %>
+    16: 
+    17: <% end %>
+  
+app/views/wing_orders/new.html.erb:15:in `block in _app_views_wing_orders_new_html_erb___1806857752579629097_70244240577480'
+app/views/wing_orders/new.html.erb:3:in `_app_views_wing_orders_new_html_erb___1806857752579629097_70244240577480'
+Started GET "/wing_orders/new" for 127.0.0.1 at 2019-04-17 11:26:17 -0400
+Processing by WingOrdersController#new as HTML
+  Rendering wing_orders/new.html.erb within layouts/application
+  Rendered wing_orders/new.html.erb within layouts/application (3.2ms)
+Completed 500 Internal Server Error in 9ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `key' for [10, "10 wings"]:Array):
+    12:   <%=f.select :state, options_for_select(@state_collection)  %>
+    13: 
+    14:   <%= f.label :quantity %>
+    15:   <%= f.collection_radio_buttons(:quantity,@quantity_collection, :key, :value, ) %>
+    16: 
+    17: <% end %>
+  
+app/views/wing_orders/new.html.erb:15:in `block in _app_views_wing_orders_new_html_erb___1806857752579629097_70244249861280'
+app/views/wing_orders/new.html.erb:3:in `_app_views_wing_orders_new_html_erb___1806857752579629097_70244249861280'
+Started GET "/wing_orders/new" for 127.0.0.1 at 2019-04-17 11:27:49 -0400
+Processing by WingOrdersController#new as HTML
+  Rendering wing_orders/new.html.erb within layouts/application
+  Rendered wing_orders/new.html.erb within layouts/application (5.1ms)
+Completed 500 Internal Server Error in 11ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `quantity_id' for [10, "10 wings"]:Array):
+    12:   <%=f.select :state, options_for_select(@state_collection)  %>
+    13: 
+    14:   <%= f.label :quantity %>
+    15:   <%= f.collection_radio_buttons(:quantity, @quantity_collection, :quantity_id, :quantity_value, ) %>
+    16: 
+    17: <% end %>
+  
+app/views/wing_orders/new.html.erb:15:in `block in _app_views_wing_orders_new_html_erb___1806857752579629097_70244255833000'
+app/views/wing_orders/new.html.erb:3:in `_app_views_wing_orders_new_html_erb___1806857752579629097_70244255833000'
+Started GET "/wing_orders/new" for 127.0.0.1 at 2019-04-17 11:29:40 -0400
+Processing by WingOrdersController#new as HTML
+  Rendering wing_orders/new.html.erb within layouts/application
+  Rendered wing_orders/new.html.erb within layouts/application (109.2ms)
+Completed 200 OK in 168ms (Views: 166.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/wing_orders/new" for 127.0.0.1 at 2019-04-17 11:29:55 -0400
+Processing by WingOrdersController#new as HTML
+  Rendering wing_orders/new.html.erb within layouts/application
+  Rendered wing_orders/new.html.erb within layouts/application (3.3ms)
+Completed 200 OK in 43ms (Views: 41.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/wing_orders" for 127.0.0.1 at 2019-04-17 11:29:57 -0400
+Processing by WingOrdersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Iq5d2FE1cY0GH9RySll2kcLkzmoAdXho83g2IbpzKNoslHW7Stj48swe9frwmHy63A51swpzNztYB9KTn7oO2Q==", "wing_order"=>{"customer_name"=>"", "city"=>"", "state"=>"MA", "quantity"=>""}, "commit"=>"Create Wing order"}
+  [1m[36mFlavor Load (0.5ms)[0m  [1m[34mSELECT "flavors".* FROM "flavors" WHERE "flavors"."id" IS NULL[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  Rendering wing_orders/new.html.erb within layouts/application
+  Rendered wing_orders/new.html.erb within layouts/application (3.1ms)
+Completed 200 OK in 64ms (Views: 37.0ms | ActiveRecord: 3.3ms)
+
+
+Started POST "/wing_orders" for 127.0.0.1 at 2019-04-17 11:30:09 -0400
+Processing by WingOrdersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Iq5d2FE1cY0GH9RySll2kcLkzmoAdXho83g2IbpzKNoslHW7Stj48swe9frwmHy63A51swpzNztYB9KTn7oO2Q==", "wing_order"=>{"customer_name"=>"", "city"=>"", "state"=>"MA", "quantity"=>""}, "commit"=>"Create Wing order"}
+Started POST "/wing_orders" for 127.0.0.1 at 2019-04-17 11:30:14 -0400
+  [1m[36mFlavor Load (0.4ms)[0m  [1m[34mSELECT "flavors".* FROM "flavors" WHERE "flavors"."id" IS NULL[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  Rendering wing_orders/new.html.erb within layouts/application
+  Rendered wing_orders/new.html.erb within layouts/application (5.8ms)
+Completed 200 OK in 50306ms (Views: 70.2ms | ActiveRecord: 12.2ms)
+
+
+Processing by WingOrdersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"WkyFcyCjsJDu5+KZ1YZ3B+wP7olJ0DCgz7sqeT62q2xUdq0QO0457yTmwxFvR30s8uVVUEPWf/NkxM7LG3+Nbw==", "wing_order"=>{"customer_name"=>"", "city"=>"", "state"=>"MA", "quantity"=>"25"}, "commit"=>"Create Wing order"}
+Completed 500 Internal Server Error in 1392ms (ActiveRecord: 0.0ms)
+
+
+  
+SystemExit (exit):
+  
+app/controllers/wing_orders_controller.rb:14:in `create'
+Started GET "/wing_orders/new" for 127.0.0.1 at 2019-04-17 11:31:07 -0400
+Processing by WingOrdersController#new as HTML
+  Rendering wing_orders/new.html.erb within layouts/application
+  Rendered wing_orders/new.html.erb within layouts/application (7.1ms)
+Completed 200 OK in 83ms (Views: 57.1ms | ActiveRecord: 3.4ms)
+
+
+Started POST "/wing_orders" for 127.0.0.1 at 2019-04-17 11:31:10 -0400
+Processing by WingOrdersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"GV2QZXJsQfAOPAVoFi/opMHbNZNLHyuAUj1DKQVTexcXZ7gGaYHIj8Q9JOCs7uKP3zGOSkEZZNP5QqebIJpdFA==", "wing_order"=>{"customer_name"=>"", "city"=>"", "state"=>"MA", "quantity"=>"50"}, "commit"=>"Create Wing order"}
+Completed 500 Internal Server Error in 22897ms (ActiveRecord: 0.0ms)
+
+
+  
+SystemExit (exit):
+  
+app/controllers/wing_orders_controller.rb:14:in `create'
+Started POST "/wing_orders" for 127.0.0.1 at 2019-04-17 11:31:48 -0400
+Processing by WingOrdersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"GV2QZXJsQfAOPAVoFi/opMHbNZNLHyuAUj1DKQVTexcXZ7gGaYHIj8Q9JOCs7uKP3zGOSkEZZNP5QqebIJpdFA==", "wing_order"=>{"customer_name"=>"test", "city"=>"test", "state"=>"MA", "quantity"=>"25"}, "commit"=>"Create Wing order"}
+  [1m[36mFlavor Load (0.5ms)[0m  [1m[34mSELECT "flavors".* FROM "flavors" WHERE "flavors"."id" IS NULL[0m
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mWingOrder Create (8.9ms)[0m  [1m[32mINSERT INTO "wing_orders" ("customer_name", "city", "state", "quantity") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["customer_name", "test"], ["city", "test"], ["state", "MA"], ["quantity", 25]]
+  [1m[35m (10.2ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/wing_orders
+Completed 302 Found in 53ms (ActiveRecord: 21.3ms)
+
+
+Started GET "/wing_orders" for 127.0.0.1 at 2019-04-17 11:31:48 -0400
+Processing by WingOrdersController#index as HTML
+  Rendering wing_orders/index.html.erb within layouts/application
+  [1m[36mWingOrder Load (0.7ms)[0m  [1m[34mSELECT "wing_orders".* FROM "wing_orders"[0m
+  [1m[36mFlavor Load (2.2ms)[0m  [1m[34mSELECT "flavors".* FROM "flavors" INNER JOIN "order_flavors" ON "flavors"."id" = "order_flavors"."flavor_id" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 1]]
+  Rendered wing_orders/index.html.erb within layouts/application (27.8ms)
+Completed 200 OK in 88ms (Views: 77.8ms | ActiveRecord: 8.2ms)
+
+
+Started GET "/wing_orders/new" for 127.0.0.1 at 2019-04-17 11:31:51 -0400
+Processing by WingOrdersController#new as HTML
+  Rendering wing_orders/new.html.erb within layouts/application
+  Rendered wing_orders/new.html.erb within layouts/application (3.3ms)
+Completed 200 OK in 49ms (Views: 41.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/wing_orders/new" for 127.0.0.1 at 2019-04-17 11:36:36 -0400
+Processing by WingOrdersController#new as HTML
+  Rendering wing_orders/new.html.erb within layouts/application
+  [1m[36mFlavor Load (0.3ms)[0m  [1m[34mSELECT "flavors".* FROM "flavors"[0m
+  Rendered wing_orders/new.html.erb within layouts/application (12.7ms)
+Completed 500 Internal Server Error in 19ms (ActiveRecord: 0.3ms)
+
+
+  
+ActionView::Template::Error (undefined method `first' for #<Flavor id: 1, name: "BBQ">):
+    15:   <%= f.collection_radio_buttons(:quantity, @quantity_collection, :first, :last ) %>
+    16: 
+    17:   <%= f.label :flavor  %>
+    18:   <%= f.collection_check_boxes(:flavor, @flavor_collection, :first, :last) %>
+    19: 
+    20:   <p>
+    21:     <%= f.submit %>
+  
+app/views/wing_orders/new.html.erb:18:in `block in _app_views_wing_orders_new_html_erb___1806857752579629097_70244232306080'
+app/views/wing_orders/new.html.erb:3:in `_app_views_wing_orders_new_html_erb___1806857752579629097_70244232306080'
+Started GET "/wing_orders/new" for 127.0.0.1 at 2019-04-17 11:36:43 -0400
+Processing by WingOrdersController#new as HTML
+  Rendering wing_orders/new.html.erb within layouts/application
+  Rendered wing_orders/new.html.erb within layouts/application (5.2ms)
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (wrong number of arguments (given 2, expected 4..6)):
+    15:   <%= f.collection_radio_buttons(:quantity, @quantity_collection, :first, :last ) %>
+    16: 
+    17:   <%= f.label :flavor  %>
+    18:   <%= f.collection_check_boxes(:flavor, @flavor_collection) %>
+    19: 
+    20:   <p>
+    21:     <%= f.submit %>
+  
+app/views/wing_orders/new.html.erb:18:in `block in _app_views_wing_orders_new_html_erb___1806857752579629097_70244241808360'
+app/views/wing_orders/new.html.erb:3:in `_app_views_wing_orders_new_html_erb___1806857752579629097_70244241808360'
+Started GET "/wing_orders/new" for 127.0.0.1 at 2019-04-17 11:37:49 -0400
+Processing by WingOrdersController#new as HTML
+  Rendering wing_orders/new.html.erb within layouts/application
+  [1m[36mFlavor Load (0.4ms)[0m  [1m[34mSELECT "flavors".* FROM "flavors"[0m
+  Rendered wing_orders/new.html.erb within layouts/application (14.6ms)
+Completed 500 Internal Server Error in 20ms (ActiveRecord: 0.4ms)
+
+
+  
+ActionView::Template::Error (undefined method `flavor' for #<WingOrder:0x007fc6046a3368>
+Did you mean?  flavors
+               flavors=):
+    15:   <%= f.collection_radio_buttons(:quantity, @quantity_collection, :first, :last ) %>
+    16: 
+    17:   <%= f.label :flavor  %>
+    18:   <%= f.collection_check_boxes(:flavor, @flavor_collection, :id, :name) %>
+    19: 
+    20:   <p>
+    21:     <%= f.submit %>
+  
+app/views/wing_orders/new.html.erb:18:in `block in _app_views_wing_orders_new_html_erb___1806857752579629097_70244227157760'
+app/views/wing_orders/new.html.erb:3:in `_app_views_wing_orders_new_html_erb___1806857752579629097_70244227157760'
+Started GET "/wing_orders/new" for 127.0.0.1 at 2019-04-17 11:37:50 -0400
+Processing by WingOrdersController#new as HTML
+  Rendering wing_orders/new.html.erb within layouts/application
+  [1m[36mFlavor Load (0.3ms)[0m  [1m[34mSELECT "flavors".* FROM "flavors"[0m
+  Rendered wing_orders/new.html.erb within layouts/application (8.3ms)
+Completed 500 Internal Server Error in 14ms (ActiveRecord: 0.3ms)
+
+
+  
+ActionView::Template::Error (undefined method `flavor' for #<WingOrder:0x007fc605020120>
+Did you mean?  flavors
+               flavors=):
+    15:   <%= f.collection_radio_buttons(:quantity, @quantity_collection, :first, :last ) %>
+    16: 
+    17:   <%= f.label :flavor  %>
+    18:   <%= f.collection_check_boxes(:flavor, @flavor_collection, :id, :name) %>
+    19: 
+    20:   <p>
+    21:     <%= f.submit %>
+  
+app/views/wing_orders/new.html.erb:18:in `block in _app_views_wing_orders_new_html_erb___1806857752579629097_70244229104740'
+app/views/wing_orders/new.html.erb:3:in `_app_views_wing_orders_new_html_erb___1806857752579629097_70244229104740'
+Started GET "/wing_orders/new" for 127.0.0.1 at 2019-04-17 11:37:59 -0400
+Processing by WingOrdersController#new as HTML
+  Rendering wing_orders/new.html.erb within layouts/application
+  [1m[36mFlavor Load (0.6ms)[0m  [1m[34mSELECT "flavors".* FROM "flavors"[0m
+  Rendered wing_orders/new.html.erb within layouts/application (5.7ms)
+Completed 200 OK in 56ms (Views: 54.0ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/wing_orders" for 127.0.0.1 at 2019-04-17 11:39:06 -0400
+Processing by WingOrdersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"FQ2HoGka0/dmjQCjGRC0OmyMCr6RuQ8fmW0aS75cdKIbN6/DcvdaiKyMISuj0b4RcmaxZ5u/QEwyEv75m5VSoQ==", "wing_order"=>{"customer_name"=>"Joe", "city"=>"Schmoe", "state"=>"CT", "quantity"=>"25", "flavors"=>["", "2", "3"]}, "commit"=>"Create Wing order"}
+Unpermitted parameter: :flavors
+  [1m[36mFlavor Load (0.4ms)[0m  [1m[34mSELECT "flavors".* FROM "flavors" WHERE "flavors"."id" IS NULL[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mWingOrder Create (0.9ms)[0m  [1m[32mINSERT INTO "wing_orders" ("customer_name", "city", "state", "quantity") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["customer_name", "Joe"], ["city", "Schmoe"], ["state", "CT"], ["quantity", 25]]
+  [1m[35m (5.9ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/wing_orders
+Completed 302 Found in 14ms (ActiveRecord: 7.4ms)
+
+
+Started GET "/wing_orders" for 127.0.0.1 at 2019-04-17 11:39:06 -0400
+Processing by WingOrdersController#index as HTML
+  Rendering wing_orders/index.html.erb within layouts/application
+  [1m[36mWingOrder Load (0.4ms)[0m  [1m[34mSELECT "wing_orders".* FROM "wing_orders"[0m
+  [1m[36mFlavor Load (0.5ms)[0m  [1m[34mSELECT "flavors".* FROM "flavors" INNER JOIN "order_flavors" ON "flavors"."id" = "order_flavors"."flavor_id" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 1]]
+  [1m[36mFlavor Load (0.3ms)[0m  [1m[34mSELECT "flavors".* FROM "flavors" INNER JOIN "order_flavors" ON "flavors"."id" = "order_flavors"."flavor_id" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 2]]
+  Rendered wing_orders/index.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 78ms (Views: 75.4ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/wing_orders/new" for 127.0.0.1 at 2019-04-17 11:39:18 -0400
+Processing by WingOrdersController#new as HTML
+  Rendering wing_orders/new.html.erb within layouts/application
+  [1m[36mFlavor Load (0.4ms)[0m  [1m[34mSELECT "flavors".* FROM "flavors"[0m
+  Rendered wing_orders/new.html.erb within layouts/application (10.7ms)
+Completed 500 Internal Server Error in 17ms (ActiveRecord: 0.4ms)
+
+
+  
+ActionView::Template::Error (undefined method `flavor' for #<WingOrder:0x007fc6072dcc18>
+Did you mean?  flavors
+               flavors=):
+    15:   <%= f.collection_radio_buttons(:quantity, @quantity_collection, :first, :last ) %>
+    16: 
+    17:   <%= f.label :flavors %>
+    18:   <%= f.collection_check_boxes(:flavor, @flavor_collection, :id, :name) %>
+    19: 
+    20:   <p>
+    21:   <%= f.submit %>
+  
+app/views/wing_orders/new.html.erb:18:in `block in _app_views_wing_orders_new_html_erb___1806857752579629097_70244243675700'
+app/views/wing_orders/new.html.erb:3:in `_app_views_wing_orders_new_html_erb___1806857752579629097_70244243675700'
+Started GET "/wing_orders/new" for 127.0.0.1 at 2019-04-17 11:39:29 -0400
+Processing by WingOrdersController#new as HTML
+  Rendering wing_orders/new.html.erb within layouts/application
+  [1m[36mFlavor Load (0.4ms)[0m  [1m[34mSELECT "flavors".* FROM "flavors"[0m
+  Rendered wing_orders/new.html.erb within layouts/application (9.9ms)
+Completed 500 Internal Server Error in 15ms (ActiveRecord: 0.4ms)
+
+
+  
+ActionView::Template::Error (undefined method `flavor_id' for #<Flavor id: 1, name: "BBQ">):
+    15:   <%= f.collection_radio_buttons(:quantity, @quantity_collection, :first, :last ) %>
+    16: 
+    17:   <%= f.label :flavors %>
+    18:   <%= f.collection_check_boxes(:flavors, @flavor_collection, :flavor_id, :name) %>
+    19: 
+    20:   <p>
+    21:   <%= f.submit %>
+  
+app/views/wing_orders/new.html.erb:18:in `block in _app_views_wing_orders_new_html_erb___1806857752579629097_70244241936580'
+app/views/wing_orders/new.html.erb:3:in `_app_views_wing_orders_new_html_erb___1806857752579629097_70244241936580'
+Started GET "/wing_orders/new" for 127.0.0.1 at 2019-04-17 11:39:39 -0400
+Processing by WingOrdersController#new as HTML
+  Rendering wing_orders/new.html.erb within layouts/application
+  [1m[36mFlavor Load (0.3ms)[0m  [1m[34mSELECT "flavors".* FROM "flavors"[0m
+  Rendered wing_orders/new.html.erb within layouts/application (7.3ms)
+Completed 200 OK in 67ms (Views: 65.2ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/wing_orders" for 127.0.0.1 at 2019-04-17 11:39:50 -0400
+Processing by WingOrdersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"05P6WBDvu1oXEJG9p3uoo6hyjXIK0d30OcmGAgOkc4bdqdI7CwIyJd0RsDUduqKItpg2qwDXkqeStmKwJm1VhQ==", "wing_order"=>{"customer_name"=>"fa", "city"=>"safd", "state"=>"MA", "quantity"=>"25", "flavors"=>["", "2", "3", "4"]}, "commit"=>"Create Wing order"}
+Unpermitted parameter: :flavors
+  [1m[36mFlavor Load (0.9ms)[0m  [1m[34mSELECT "flavors".* FROM "flavors" WHERE "flavors"."id" IS NULL[0m
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mWingOrder Create (0.7ms)[0m  [1m[32mINSERT INTO "wing_orders" ("customer_name", "city", "state", "quantity") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["customer_name", "fa"], ["city", "safd"], ["state", "MA"], ["quantity", 25]]
+  [1m[35m (5.8ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/wing_orders
+Completed 302 Found in 12ms (ActiveRecord: 7.9ms)
+
+
+Started GET "/wing_orders" for 127.0.0.1 at 2019-04-17 11:39:50 -0400
+Processing by WingOrdersController#index as HTML
+  Rendering wing_orders/index.html.erb within layouts/application
+  [1m[36mWingOrder Load (0.4ms)[0m  [1m[34mSELECT "wing_orders".* FROM "wing_orders"[0m
+  [1m[36mFlavor Load (1.1ms)[0m  [1m[34mSELECT "flavors".* FROM "flavors" INNER JOIN "order_flavors" ON "flavors"."id" = "order_flavors"."flavor_id" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 1]]
+  [1m[36mFlavor Load (0.5ms)[0m  [1m[34mSELECT "flavors".* FROM "flavors" INNER JOIN "order_flavors" ON "flavors"."id" = "order_flavors"."flavor_id" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 2]]
+  [1m[36mFlavor Load (0.4ms)[0m  [1m[34mSELECT "flavors".* FROM "flavors" INNER JOIN "order_flavors" ON "flavors"."id" = "order_flavors"."flavor_id" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 3]]
+  Rendered wing_orders/index.html.erb within layouts/application (7.7ms)
+Completed 200 OK in 51ms (Views: 46.9ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/wing_orders" for 127.0.0.1 at 2019-04-17 13:23:56 -0400
+Processing by WingOrdersController#index as HTML
+  Rendering wing_orders/index.html.erb within layouts/application
+  [1m[36mWingOrder Load (0.9ms)[0m  [1m[34mSELECT "wing_orders".* FROM "wing_orders"[0m
+  [1m[36mFlavor Load (5.8ms)[0m  [1m[34mSELECT "flavors".* FROM "flavors" INNER JOIN "order_flavors" ON "flavors"."id" = "order_flavors"."flavor_id" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 1]]
+  [1m[36mFlavor Load (0.4ms)[0m  [1m[34mSELECT "flavors".* FROM "flavors" INNER JOIN "order_flavors" ON "flavors"."id" = "order_flavors"."flavor_id" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 2]]
+  [1m[36mFlavor Load (0.3ms)[0m  [1m[34mSELECT "flavors".* FROM "flavors" INNER JOIN "order_flavors" ON "flavors"."id" = "order_flavors"."flavor_id" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 3]]
+  Rendered wing_orders/index.html.erb within layouts/application (27.6ms)
+Completed 200 OK in 177ms (Views: 161.9ms | ActiveRecord: 8.3ms)
+
+
+Started GET "/wing_orders/new" for 127.0.0.1 at 2019-04-17 13:24:57 -0400
+Processing by WingOrdersController#new as HTML
+  Rendering wing_orders/new.html.erb within layouts/application
+  [1m[36mFlavor Load (0.6ms)[0m  [1m[34mSELECT "flavors".* FROM "flavors"[0m
+  Rendered wing_orders/new.html.erb within layouts/application (17.2ms)
+Completed 200 OK in 197ms (Views: 144.5ms | ActiveRecord: 31.0ms)
+
+
+Started POST "/wing_orders" for 127.0.0.1 at 2019-04-17 13:25:05 -0400
+Processing by WingOrdersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"7TEt53nfH84gfGQbO5H5RQ1eKXr3XpIzCPoqyYzkahDjCwWEYjKWsep9RZOBUPNuE7SSo/1Y3WCjhc57qS1MEw==", "wing_order"=>{"customer_name"=>"sdf", "city"=>"sdfsd", "state"=>"ME", "quantity"=>"25", "flavors"=>["", "2", "3"]}, "commit"=>"Create Wing order"}
+Unpermitted parameter: :flavors
+  [1m[36mFlavor Load (0.5ms)[0m  [1m[34mSELECT "flavors".* FROM "flavors" WHERE "flavors"."id" IS NULL[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mWingOrder Create (0.7ms)[0m  [1m[32mINSERT INTO "wing_orders" ("customer_name", "city", "state", "quantity") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["customer_name", "sdf"], ["city", "sdfsd"], ["state", "ME"], ["quantity", 25]]
+  [1m[35m (13.5ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/wing_orders
+Completed 302 Found in 32876ms (ActiveRecord: 14.9ms)
+
+
+Started GET "/wing_orders" for 127.0.0.1 at 2019-04-17 13:25:38 -0400
+Processing by WingOrdersController#index as HTML
+  Rendering wing_orders/index.html.erb within layouts/application
+  [1m[36mWingOrder Load (0.3ms)[0m  [1m[34mSELECT "wing_orders".* FROM "wing_orders"[0m
+  [1m[36mFlavor Load (0.4ms)[0m  [1m[34mSELECT "flavors".* FROM "flavors" INNER JOIN "order_flavors" ON "flavors"."id" = "order_flavors"."flavor_id" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 1]]
+  [1m[36mFlavor Load (0.4ms)[0m  [1m[34mSELECT "flavors".* FROM "flavors" INNER JOIN "order_flavors" ON "flavors"."id" = "order_flavors"."flavor_id" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 2]]
+  [1m[36mFlavor Load (0.3ms)[0m  [1m[34mSELECT "flavors".* FROM "flavors" INNER JOIN "order_flavors" ON "flavors"."id" = "order_flavors"."flavor_id" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 3]]
+  [1m[36mFlavor Load (0.2ms)[0m  [1m[34mSELECT "flavors".* FROM "flavors" INNER JOIN "order_flavors" ON "flavors"."id" = "order_flavors"."flavor_id" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 4]]
+  Rendered wing_orders/index.html.erb within layouts/application (16.6ms)
+Completed 200 OK in 111ms (Views: 107.1ms | ActiveRecord: 2.8ms)
+
+
+Started GET "/wing_orders" for 127.0.0.1 at 2019-04-17 13:26:39 -0400
+Processing by WingOrdersController#index as HTML
+  Rendering wing_orders/index.html.erb within layouts/application
+  [1m[36mWingOrder Load (0.3ms)[0m  [1m[34mSELECT "wing_orders".* FROM "wing_orders"[0m
+  [1m[36mFlavor Load (0.2ms)[0m  [1m[34mSELECT "flavors".* FROM "flavors" INNER JOIN "order_flavors" ON "flavors"."id" = "order_flavors"."flavor_id" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 1]]
+  [1m[36mFlavor Load (0.3ms)[0m  [1m[34mSELECT "flavors".* FROM "flavors" INNER JOIN "order_flavors" ON "flavors"."id" = "order_flavors"."flavor_id" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 2]]
+  [1m[36mFlavor Load (0.3ms)[0m  [1m[34mSELECT "flavors".* FROM "flavors" INNER JOIN "order_flavors" ON "flavors"."id" = "order_flavors"."flavor_id" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 3]]
+  [1m[36mFlavor Load (0.3ms)[0m  [1m[34mSELECT "flavors".* FROM "flavors" INNER JOIN "order_flavors" ON "flavors"."id" = "order_flavors"."flavor_id" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 4]]
+  Rendered wing_orders/index.html.erb within layouts/application (29763.8ms)
+Completed 200 OK in 29845ms (Views: 29829.6ms | ActiveRecord: 9.7ms)
+
+
+Started GET "/wing_orders" for 127.0.0.1 at 2019-04-17 13:32:22 -0400
+Processing by WingOrdersController#index as HTML
+  [1m[36mWingOrder Load (6.7ms)[0m  [1m[34mSELECT "wing_orders".* FROM "wing_orders"[0m
+  [1m[36mFlavor Load (0.4ms)[0m  [1m[34mSELECT "flavors".* FROM "flavors" INNER JOIN "order_flavors" ON "flavors"."id" = "order_flavors"."flavor_id" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 1]]
+  [1m[36mFlavor Load (0.4ms)[0m  [1m[34mSELECT "flavors".* FROM "flavors"[0m
+Completed 500 Internal Server Error in 403567ms (ActiveRecord: 18.9ms)
+
+
+  
+SystemExit (exit):
+  
+app/controllers/wing_orders_controller.rb:4:in `index'
+Started GET "/wing_orders" for 127.0.0.1 at 2019-04-17 13:42:22 -0400
+  [1m[35m (6.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by WingOrdersController#index as HTML
+  Rendering wing_orders/index.html.erb within layouts/application
+  [1m[36mWingOrder Load (0.6ms)[0m  [1m[34mSELECT "wing_orders".* FROM "wing_orders"[0m
+  [1m[36mFlavor Load (0.4ms)[0m  [1m[34mSELECT "flavors".* FROM "flavors" INNER JOIN "order_flavors" ON "flavors"."id" = "order_flavors"."flavor_id" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 1]]
+  [1m[36mOrderFlavor Load (0.2ms)[0m  [1m[34mSELECT "order_flavors".* FROM "order_flavors" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 1]]
+  [1m[36mOrderFlavor Load (0.3ms)[0m  [1m[34mSELECT "order_flavors".* FROM "order_flavors" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 2]]
+  [1m[36mOrderFlavor Load (0.4ms)[0m  [1m[34mSELECT "order_flavors".* FROM "order_flavors" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 3]]
+  [1m[36mOrderFlavor Load (0.4ms)[0m  [1m[34mSELECT "order_flavors".* FROM "order_flavors" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 4]]
+  Rendered wing_orders/index.html.erb within layouts/application (33270.3ms)
+Completed 200 OK in 33694ms (Views: 33671.9ms | ActiveRecord: 11.5ms)
+
+
+Started GET "/wing_orders/new" for 127.0.0.1 at 2019-04-17 13:47:22 -0400
+Processing by WingOrdersController#new as HTML
+  Rendering wing_orders/new.html.erb within layouts/application
+  [1m[36mFlavor Load (0.5ms)[0m  [1m[34mSELECT "flavors".* FROM "flavors"[0m
+  Rendered wing_orders/new.html.erb within layouts/application (141.5ms)
+Completed 200 OK in 281ms (Views: 195.7ms | ActiveRecord: 10.2ms)
+
+
+Started POST "/wing_orders" for 127.0.0.1 at 2019-04-17 13:47:29 -0400
+Processing by WingOrdersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"DJkKUyP8vN7FAs1mZZs7Fo8m4gCfi0NDuFLWqs218l8CoyIwOBE1oQ8D7O7fWjE9kcxZ2ZWNDBATLTIY6HzUXA==", "wing_order"=>{"customer_name"=>"sdfasdf", "city"=>"dsfasdf", "state"=>"MA", "quantity"=>"25", "flavors"=>["", "2", "3"]}, "commit"=>"Create Wing order"}
+Unpermitted parameter: :flavors
+  [1m[36mFlavor Load (0.4ms)[0m  [1m[34mSELECT "flavors".* FROM "flavors" WHERE "flavors"."id" IS NULL[0m
+Unpermitted parameter: :flavors
+Started GET "/wing_orders/new" for 127.0.0.1 at 2019-04-17 13:50:07 -0400
+  [1m[36mCACHE Flavor Load (0.1ms)[0m  [1m[34mSELECT "flavors".* FROM "flavors" WHERE "flavors"."id" IS NULL[0m
+  [1m[36mCACHE Flavor Load (0.0ms)[0m  [1m[34mSELECT "flavors".* FROM "flavors" WHERE "flavors"."id" IS NULL[0m
+  [1m[36mCACHE Flavor Load (0.0ms)[0m  [1m[34mSELECT "flavors".* FROM "flavors" WHERE "flavors"."id" IS NULL[0m
+Completed 500 Internal Server Error in 2430702ms (ActiveRecord: 4.8ms)
+
+
+  
+SystemExit (exit):
+  
+app/controllers/wing_orders_controller.rb:16:in `create'
+Processing by WingOrdersController#new as HTML
+  Rendering wing_orders/new.html.erb within layouts/application
+  [1m[36mFlavor Load (0.4ms)[0m  [1m[34mSELECT "flavors".* FROM "flavors"[0m
+  Rendered wing_orders/new.html.erb within layouts/application (21.8ms)
+Completed 200 OK in 120ms (Views: 92.4ms | ActiveRecord: 7.9ms)
+
+
+Started GET "/wing_orders/new" for 127.0.0.1 at 2019-04-17 14:28:17 -0400
+  [1m[35m (6.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by WingOrdersController#new as HTML
+  Rendering wing_orders/new.html.erb within layouts/application
+  [1m[36mFlavor Load (0.5ms)[0m  [1m[34mSELECT "flavors".* FROM "flavors"[0m
+  Rendered wing_orders/new.html.erb within layouts/application (147.9ms)
+Completed 200 OK in 470ms (Views: 442.0ms | ActiveRecord: 6.7ms)
+
+
+Started POST "/wing_orders" for 127.0.0.1 at 2019-04-17 14:28:26 -0400
+Processing by WingOrdersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"WSDjgP2oRqp0MQuwjDV+fe4uRP3s5HqKUgqPht2mLIJXGsvj5kXP1b4wKjg29HRW8MT/JObiNdn5dWs0+G8KgQ==", "wing_order"=>{"customer_name"=>"hkbvih", "city"=>"khbk", "state"=>"MA", "quantity"=>"25", "flavors"=>["", "3"]}, "commit"=>"Create Wing order"}
+Unpermitted parameter: :flavors
+  [1m[36mFlavor Load (0.7ms)[0m  [1m[34mSELECT "flavors".* FROM "flavors" WHERE "flavors"."id" IS NULL[0m
+  [1m[36mFlavor Load (0.4ms)[0m  [1m[34mSELECT "flavors".* FROM "flavors"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mWingOrder Create (7.5ms)[0m  [1m[32mINSERT INTO "wing_orders" ("customer_name", "city", "state", "quantity") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["customer_name", "hkbvih"], ["city", "khbk"], ["state", "MA"], ["quantity", 25]]
+  [1m[35m (15.6ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/wing_orders
+Completed 302 Found in 202036ms (ActiveRecord: 24.5ms)
+
+
+Started GET "/wing_orders" for 127.0.0.1 at 2019-04-17 14:31:48 -0400
+Processing by WingOrdersController#index as HTML
+  Rendering wing_orders/index.html.erb within layouts/application
+  [1m[36mWingOrder Load (0.5ms)[0m  [1m[34mSELECT "wing_orders".* FROM "wing_orders"[0m
+  Rendered wing_orders/index.html.erb within layouts/application (1961.5ms)
+Completed 500 Internal Server Error in 1967ms (ActiveRecord: 0.5ms)
+
+
+  
+SystemExit (exit):
+  
+app/views/wing_orders/index.html.erb:6:in `block in _app_views_wing_orders_index_html_erb__4259848219354717537_70302893517920'
+app/views/wing_orders/index.html.erb:4:in `_app_views_wing_orders_index_html_erb__4259848219354717537_70302893517920'
+Started GET "/wing_orders" for 127.0.0.1 at 2019-04-17 14:31:56 -0400
+Processing by WingOrdersController#index as HTML
+  Rendering wing_orders/index.html.erb within layouts/application
+  [1m[36mWingOrder Load (0.4ms)[0m  [1m[34mSELECT "wing_orders".* FROM "wing_orders"[0m
+  [1m[36mOrderFlavor Load (0.4ms)[0m  [1m[34mSELECT "order_flavors".* FROM "order_flavors" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 1]]
+  Rendered wing_orders/index.html.erb within layouts/application (10640.4ms)
+Completed 500 Internal Server Error in 10646ms (ActiveRecord: 4.4ms)
+
+
+  
+SystemExit (exit):
+  
+app/views/wing_orders/index.html.erb:6:in `block in _app_views_wing_orders_index_html_erb__4259848219354717537_70302924000000'
+app/views/wing_orders/index.html.erb:4:in `_app_views_wing_orders_index_html_erb__4259848219354717537_70302924000000'
+Started GET "/wing_orders" for 127.0.0.1 at 2019-04-17 14:32:12 -0400
+Processing by WingOrdersController#index as HTML
+  Rendering wing_orders/index.html.erb within layouts/application
+  [1m[36mWingOrder Load (0.5ms)[0m  [1m[34mSELECT "wing_orders".* FROM "wing_orders"[0m
+  [1m[36mOrderFlavor Load (0.3ms)[0m  [1m[34mSELECT "order_flavors".* FROM "order_flavors" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 1]]
+  [1m[36mOrderFlavor Load (0.3ms)[0m  [1m[34mSELECT "order_flavors".* FROM "order_flavors" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 2]]
+  [1m[36mOrderFlavor Load (0.4ms)[0m  [1m[34mSELECT "order_flavors".* FROM "order_flavors" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 3]]
+  [1m[36mOrderFlavor Load (0.4ms)[0m  [1m[34mSELECT "order_flavors".* FROM "order_flavors" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 4]]
+  [1m[36mOrderFlavor Load (0.4ms)[0m  [1m[34mSELECT "order_flavors".* FROM "order_flavors" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 5]]
+  Rendered wing_orders/index.html.erb within layouts/application (18535.2ms)
+Completed 200 OK in 18589ms (Views: 18582.5ms | ActiveRecord: 2.4ms)
+
+
+Started GET "/wing_orders" for 127.0.0.1 at 2019-04-17 14:32:54 -0400
+Processing by WingOrdersController#index as HTML
+  Rendering wing_orders/index.html.erb within layouts/application
+  [1m[36mWingOrder Load (0.5ms)[0m  [1m[34mSELECT "wing_orders".* FROM "wing_orders"[0m
+  [1m[36mOrderFlavor Load (0.2ms)[0m  [1m[34mSELECT "order_flavors".* FROM "order_flavors" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 1]]
+  [1m[36mOrderFlavor Load (0.2ms)[0m  [1m[34mSELECT "order_flavors".* FROM "order_flavors" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 2]]
+  [1m[36mOrderFlavor Load (0.3ms)[0m  [1m[34mSELECT "order_flavors".* FROM "order_flavors" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 3]]
+  [1m[36mOrderFlavor Load (0.2ms)[0m  [1m[34mSELECT "order_flavors".* FROM "order_flavors" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 4]]
+  [1m[36mOrderFlavor Load (0.1ms)[0m  [1m[34mSELECT "order_flavors".* FROM "order_flavors" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 5]]
+  Rendered wing_orders/index.html.erb within layouts/application (8.1ms)
+Completed 200 OK in 76ms (Views: 70.1ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/wing_orders/new" for 127.0.0.1 at 2019-04-17 14:32:58 -0400
+Processing by WingOrdersController#new as HTML
+  Rendering wing_orders/new.html.erb within layouts/application
+  Rendered wing_orders/new.html.erb within layouts/application (6.4ms)
+Completed 500 Internal Server Error in 18ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `merge' for :name:Symbol):
+    15:   <%= f.collection_radio_buttons(:quantity, @quantity_collection, :first, :last ) %>
+    16: 
+    17:   <%= f.label :flavors %>
+    18:   <%= f.collection_check_boxes(:flavors, :flavor_ids, @flavor_collection, :id, :name) %>
+    19: 
+    20:   <p>
+    21:   <%= f.submit %>
+  
+app/views/wing_orders/new.html.erb:18:in `block in _app_views_wing_orders_new_html_erb__3211104333874820004_70302863875480'
+app/views/wing_orders/new.html.erb:3:in `_app_views_wing_orders_new_html_erb__3211104333874820004_70302863875480'
+Started GET "/wing_orders/new" for 127.0.0.1 at 2019-04-17 14:36:15 -0400
+Processing by WingOrdersController#new as HTML
+  Rendering wing_orders/new.html.erb within layouts/application
+  [1m[36mFlavor Load (2.4ms)[0m  [1m[34mSELECT "flavors".* FROM "flavors"[0m
+  Rendered wing_orders/new.html.erb within layouts/application (23.8ms)
+Completed 200 OK in 106ms (Views: 101.2ms | ActiveRecord: 2.4ms)
+
+
+Started POST "/wing_orders" for 127.0.0.1 at 2019-04-17 14:36:20 -0400
+Processing by WingOrdersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"uGMcpbitogzX/gkoPO08KPt38IJZW49TAg1H/ULNZ1q2WTTGo0Arcx3/KKCGLDYD5Z1LW1NdwACpcqNPZwRBWQ==", "wing_order"=>{"customer_name"=>"fsdafsd", "city"=>"sdfsdfs", "state"=>"MA", "quantity"=>"25", "flavor_ids"=>["", "2", "3"]}, "commit"=>"Create Wing order"}
+Unpermitted parameter: :flavor_ids
+  [1m[36mFlavor Load (7.3ms)[0m  [1m[34mSELECT "flavors".* FROM "flavors" WHERE "flavors"."id" IN ($1, $2, $3)[0m  [["id", nil], ["id", 2], ["id", 3]]
+Completed 500 Internal Server Error in 64ms (ActiveRecord: 16.5ms)
+
+
+  
+SystemExit (exit):
+  
+app/controllers/wing_orders_controller.rb:16:in `create'
+Started POST "/wing_orders" for 127.0.0.1 at 2019-04-17 14:37:29 -0400
+Processing by WingOrdersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"uGMcpbitogzX/gkoPO08KPt38IJZW49TAg1H/ULNZ1q2WTTGo0Arcx3/KKCGLDYD5Z1LW1NdwACpcqNPZwRBWQ==", "wing_order"=>{"customer_name"=>"fsdafsd", "city"=>"sdfsdfs", "state"=>"MA", "quantity"=>"25", "flavor_ids"=>["", "2", "3"]}, "commit"=>"Create Wing order"}
+Unpermitted parameter: :flavor_ids
+  [1m[36mFlavor Load (1.0ms)[0m  [1m[34mSELECT "flavors".* FROM "flavors" WHERE "flavors"."id" IN ($1, $2, $3)[0m  [["id", nil], ["id", 2], ["id", 3]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mWingOrder Create (0.7ms)[0m  [1m[32mINSERT INTO "wing_orders" ("customer_name", "city", "state", "quantity") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["customer_name", "fsdafsd"], ["city", "sdfsdfs"], ["state", "MA"], ["quantity", 25]]
+  [1m[36mOrderFlavor Create (7.7ms)[0m  [1m[32mINSERT INTO "order_flavors" ("wing_order_id", "flavor_id") VALUES ($1, $2) RETURNING "id"[0m  [["wing_order_id", 6], ["flavor_id", 2]]
+  [1m[36mOrderFlavor Create (0.4ms)[0m  [1m[32mINSERT INTO "order_flavors" ("wing_order_id", "flavor_id") VALUES ($1, $2) RETURNING "id"[0m  [["wing_order_id", 6], ["flavor_id", 3]]
+  [1m[35m (1.1ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/wing_orders
+Completed 302 Found in 12832ms (ActiveRecord: 11.2ms)
+
+
+Started GET "/wing_orders" for 127.0.0.1 at 2019-04-17 14:37:42 -0400
+Processing by WingOrdersController#index as HTML
+  Rendering wing_orders/index.html.erb within layouts/application
+  [1m[36mWingOrder Load (0.4ms)[0m  [1m[34mSELECT "wing_orders".* FROM "wing_orders"[0m
+  [1m[36mOrderFlavor Load (0.2ms)[0m  [1m[34mSELECT "order_flavors".* FROM "order_flavors" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 1]]
+  [1m[36mOrderFlavor Load (0.2ms)[0m  [1m[34mSELECT "order_flavors".* FROM "order_flavors" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 2]]
+  [1m[36mOrderFlavor Load (0.2ms)[0m  [1m[34mSELECT "order_flavors".* FROM "order_flavors" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 3]]
+  [1m[36mOrderFlavor Load (0.2ms)[0m  [1m[34mSELECT "order_flavors".* FROM "order_flavors" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 4]]
+  [1m[36mOrderFlavor Load (0.2ms)[0m  [1m[34mSELECT "order_flavors".* FROM "order_flavors" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 5]]
+  [1m[36mOrderFlavor Load (0.3ms)[0m  [1m[34mSELECT "order_flavors".* FROM "order_flavors" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 6]]
+  Rendered wing_orders/index.html.erb within layouts/application (18.8ms)
+Completed 500 Internal Server Error in 26ms (ActiveRecord: 1.9ms)
+
+
+  
+ActionView::Template::Error (undefined method `name' for #<OrderFlavor id: 1, wing_order_id: 6, flavor_id: 2>):
+     9:     <span>Include Ranch Dressing? <%= wing_order.ranch_dressing ? "Yes" : "No" %></span>
+    10:     <h3>Flavors To Include</h3>
+    11:     <% wing_order.order_flavors.each do |flavor| %>
+    12:       <span><%= flavor.name %></span>
+    13:     <% end %>
+    14:   </div>
+    15:   <hr />
+  
+app/views/wing_orders/index.html.erb:12:in `block (2 levels) in _app_views_wing_orders_index_html_erb__4259848219354717537_70302923378320'
+app/views/wing_orders/index.html.erb:11:in `block in _app_views_wing_orders_index_html_erb__4259848219354717537_70302923378320'
+app/views/wing_orders/index.html.erb:4:in `_app_views_wing_orders_index_html_erb__4259848219354717537_70302923378320'
+Started GET "/wing_orders" for 127.0.0.1 at 2019-04-17 14:37:44 -0400
+Processing by WingOrdersController#index as HTML
+  Rendering wing_orders/index.html.erb within layouts/application
+  [1m[36mWingOrder Load (0.3ms)[0m  [1m[34mSELECT "wing_orders".* FROM "wing_orders"[0m
+  [1m[36mOrderFlavor Load (1.1ms)[0m  [1m[34mSELECT "order_flavors".* FROM "order_flavors" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 1]]
+  [1m[36mOrderFlavor Load (0.3ms)[0m  [1m[34mSELECT "order_flavors".* FROM "order_flavors" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 2]]
+  [1m[36mOrderFlavor Load (0.2ms)[0m  [1m[34mSELECT "order_flavors".* FROM "order_flavors" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 3]]
+  [1m[36mOrderFlavor Load (0.1ms)[0m  [1m[34mSELECT "order_flavors".* FROM "order_flavors" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 4]]
+  [1m[36mOrderFlavor Load (0.2ms)[0m  [1m[34mSELECT "order_flavors".* FROM "order_flavors" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 5]]
+  [1m[36mOrderFlavor Load (0.1ms)[0m  [1m[34mSELECT "order_flavors".* FROM "order_flavors" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 6]]
+  Rendered wing_orders/index.html.erb within layouts/application (13.5ms)
+Completed 500 Internal Server Error in 18ms (ActiveRecord: 2.3ms)
+
+
+  
+ActionView::Template::Error (undefined method `name' for #<OrderFlavor id: 1, wing_order_id: 6, flavor_id: 2>):
+     9:     <span>Include Ranch Dressing? <%= wing_order.ranch_dressing ? "Yes" : "No" %></span>
+    10:     <h3>Flavors To Include</h3>
+    11:     <% wing_order.order_flavors.each do |flavor| %>
+    12:       <span><%= flavor.name %></span>
+    13:     <% end %>
+    14:   </div>
+    15:   <hr />
+  
+app/views/wing_orders/index.html.erb:12:in `block (2 levels) in _app_views_wing_orders_index_html_erb__4259848219354717537_70302917941740'
+app/views/wing_orders/index.html.erb:11:in `block in _app_views_wing_orders_index_html_erb__4259848219354717537_70302917941740'
+app/views/wing_orders/index.html.erb:4:in `_app_views_wing_orders_index_html_erb__4259848219354717537_70302917941740'
+Started POST "/wing_orders" for 127.0.0.1 at 2019-04-17 14:37:50 -0400
+Processing by WingOrdersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"uGMcpbitogzX/gkoPO08KPt38IJZW49TAg1H/ULNZ1q2WTTGo0Arcx3/KKCGLDYD5Z1LW1NdwACpcqNPZwRBWQ==", "wing_order"=>{"customer_name"=>"fsdafsd", "city"=>"sdfsdfs", "state"=>"MA", "quantity"=>"25", "flavor_ids"=>["", "1", "2", "3"]}, "commit"=>"Create Wing order"}
+Unpermitted parameter: :flavor_ids
+  [1m[36mFlavor Load (7.5ms)[0m  [1m[34mSELECT "flavors".* FROM "flavors" WHERE "flavors"."id" IN ($1, $2, $3, $4)[0m  [["id", nil], ["id", 1], ["id", 2], ["id", 3]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mWingOrder Create (0.4ms)[0m  [1m[32mINSERT INTO "wing_orders" ("customer_name", "city", "state", "quantity") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["customer_name", "fsdafsd"], ["city", "sdfsdfs"], ["state", "MA"], ["quantity", 25]]
+  [1m[36mOrderFlavor Create (0.3ms)[0m  [1m[32mINSERT INTO "order_flavors" ("wing_order_id", "flavor_id") VALUES ($1, $2) RETURNING "id"[0m  [["wing_order_id", 7], ["flavor_id", 1]]
+  [1m[36mOrderFlavor Create (0.3ms)[0m  [1m[32mINSERT INTO "order_flavors" ("wing_order_id", "flavor_id") VALUES ($1, $2) RETURNING "id"[0m  [["wing_order_id", 7], ["flavor_id", 2]]
+  [1m[36mOrderFlavor Create (0.2ms)[0m  [1m[32mINSERT INTO "order_flavors" ("wing_order_id", "flavor_id") VALUES ($1, $2) RETURNING "id"[0m  [["wing_order_id", 7], ["flavor_id", 3]]
+  [1m[35m (6.4ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/wing_orders
+Completed 302 Found in 45653ms (ActiveRecord: 15.4ms)
+
+
+Started GET "/wing_orders" for 127.0.0.1 at 2019-04-17 14:38:35 -0400
+Processing by WingOrdersController#index as HTML
+  Rendering wing_orders/index.html.erb within layouts/application
+  [1m[36mWingOrder Load (0.3ms)[0m  [1m[34mSELECT "wing_orders".* FROM "wing_orders"[0m
+  [1m[36mOrderFlavor Load (0.1ms)[0m  [1m[34mSELECT "order_flavors".* FROM "order_flavors" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 1]]
+  [1m[36mOrderFlavor Load (0.1ms)[0m  [1m[34mSELECT "order_flavors".* FROM "order_flavors" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 2]]
+  [1m[36mOrderFlavor Load (0.1ms)[0m  [1m[34mSELECT "order_flavors".* FROM "order_flavors" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 3]]
+  [1m[36mOrderFlavor Load (0.2ms)[0m  [1m[34mSELECT "order_flavors".* FROM "order_flavors" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 4]]
+  [1m[36mOrderFlavor Load (0.2ms)[0m  [1m[34mSELECT "order_flavors".* FROM "order_flavors" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 5]]
+  [1m[36mOrderFlavor Load (0.7ms)[0m  [1m[34mSELECT "order_flavors".* FROM "order_flavors" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 6]]
+  Rendered wing_orders/index.html.erb within layouts/application (17.7ms)
+Completed 500 Internal Server Error in 82ms (ActiveRecord: 1.9ms)
+
+
+  
+ActionView::Template::Error (undefined method `name' for #<OrderFlavor id: 1, wing_order_id: 6, flavor_id: 2>):
+     9:     <span>Include Ranch Dressing? <%= wing_order.ranch_dressing ? "Yes" : "No" %></span>
+    10:     <h3>Flavors To Include</h3>
+    11:     <% wing_order.order_flavors.each do |flavor| %>
+    12:       <span><%= flavor.name %></span>
+    13:     <% end %>
+    14:   </div>
+    15:   <hr />
+  
+app/views/wing_orders/index.html.erb:12:in `block (2 levels) in _app_views_wing_orders_index_html_erb__4259848219354717537_70302863710740'
+app/views/wing_orders/index.html.erb:11:in `block in _app_views_wing_orders_index_html_erb__4259848219354717537_70302863710740'
+app/views/wing_orders/index.html.erb:4:in `_app_views_wing_orders_index_html_erb__4259848219354717537_70302863710740'
+Started GET "/wing_orders" for 127.0.0.1 at 2019-04-17 14:38:40 -0400
+Processing by WingOrdersController#index as HTML
+  Rendering wing_orders/index.html.erb within layouts/application
+  [1m[36mWingOrder Load (0.4ms)[0m  [1m[34mSELECT "wing_orders".* FROM "wing_orders"[0m
+  [1m[36mOrderFlavor Load (0.2ms)[0m  [1m[34mSELECT "order_flavors".* FROM "order_flavors" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 1]]
+  [1m[36mOrderFlavor Load (0.2ms)[0m  [1m[34mSELECT "order_flavors".* FROM "order_flavors" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 2]]
+  [1m[36mOrderFlavor Load (0.2ms)[0m  [1m[34mSELECT "order_flavors".* FROM "order_flavors" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 3]]
+  [1m[36mOrderFlavor Load (0.1ms)[0m  [1m[34mSELECT "order_flavors".* FROM "order_flavors" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 4]]
+  [1m[36mOrderFlavor Load (0.4ms)[0m  [1m[34mSELECT "order_flavors".* FROM "order_flavors" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 5]]
+  [1m[36mOrderFlavor Load (0.6ms)[0m  [1m[34mSELECT "order_flavors".* FROM "order_flavors" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 6]]
+  Rendered wing_orders/index.html.erb within layouts/application (13.4ms)
+Completed 500 Internal Server Error in 19ms (ActiveRecord: 2.1ms)
+
+
+  
+ActionView::Template::Error (undefined method `name' for #<OrderFlavor id: 1, wing_order_id: 6, flavor_id: 2>):
+     9:     <span>Include Ranch Dressing? <%= wing_order.ranch_dressing ? "Yes" : "No" %></span>
+    10:     <h3>Flavors To Include</h3>
+    11:     <% wing_order.order_flavors.each do |flavor| %>
+    12:       <span><%= flavor.name %></span>
+    13:     <% end %>
+    14:   </div>
+    15:   <hr />
+  
+app/views/wing_orders/index.html.erb:12:in `block (2 levels) in _app_views_wing_orders_index_html_erb__4259848219354717537_70302934713600'
+app/views/wing_orders/index.html.erb:11:in `block in _app_views_wing_orders_index_html_erb__4259848219354717537_70302934713600'
+app/views/wing_orders/index.html.erb:4:in `_app_views_wing_orders_index_html_erb__4259848219354717537_70302934713600'
+Started GET "/wing_orders" for 127.0.0.1 at 2019-04-17 14:38:42 -0400
+Processing by WingOrdersController#index as HTML
+  Rendering wing_orders/index.html.erb within layouts/application
+  [1m[36mWingOrder Load (0.5ms)[0m  [1m[34mSELECT "wing_orders".* FROM "wing_orders"[0m
+  [1m[36mOrderFlavor Load (0.7ms)[0m  [1m[34mSELECT "order_flavors".* FROM "order_flavors" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 1]]
+  [1m[36mOrderFlavor Load (0.3ms)[0m  [1m[34mSELECT "order_flavors".* FROM "order_flavors" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 2]]
+  [1m[36mOrderFlavor Load (0.2ms)[0m  [1m[34mSELECT "order_flavors".* FROM "order_flavors" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 3]]
+  [1m[36mOrderFlavor Load (0.1ms)[0m  [1m[34mSELECT "order_flavors".* FROM "order_flavors" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 4]]
+  [1m[36mOrderFlavor Load (0.2ms)[0m  [1m[34mSELECT "order_flavors".* FROM "order_flavors" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 5]]
+  [1m[36mOrderFlavor Load (0.3ms)[0m  [1m[34mSELECT "order_flavors".* FROM "order_flavors" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 6]]
+  Rendered wing_orders/index.html.erb within layouts/application (13.9ms)
+Completed 500 Internal Server Error in 22ms (ActiveRecord: 2.2ms)
+
+
+  
+ActionView::Template::Error (undefined method `name' for #<OrderFlavor id: 1, wing_order_id: 6, flavor_id: 2>):
+     9:     <span>Include Ranch Dressing? <%= wing_order.ranch_dressing ? "Yes" : "No" %></span>
+    10:     <h3>Flavors To Include</h3>
+    11:     <% wing_order.order_flavors.each do |flavor| %>
+    12:       <span><%= flavor.name %></span>
+    13:     <% end %>
+    14:   </div>
+    15:   <hr />
+  
+app/views/wing_orders/index.html.erb:12:in `block (2 levels) in _app_views_wing_orders_index_html_erb__4259848219354717537_70302908274260'
+app/views/wing_orders/index.html.erb:11:in `block in _app_views_wing_orders_index_html_erb__4259848219354717537_70302908274260'
+app/views/wing_orders/index.html.erb:4:in `_app_views_wing_orders_index_html_erb__4259848219354717537_70302908274260'
+Started POST "/wing_orders" for 127.0.0.1 at 2019-04-17 14:38:44 -0400
+Processing by WingOrdersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"uGMcpbitogzX/gkoPO08KPt38IJZW49TAg1H/ULNZ1q2WTTGo0Arcx3/KKCGLDYD5Z1LW1NdwACpcqNPZwRBWQ==", "wing_order"=>{"customer_name"=>"fsdafsd", "city"=>"sdfsdfs", "state"=>"MA", "quantity"=>"25", "flavor_ids"=>["", "1", "2", "3"]}, "commit"=>"Create Wing order"}
+Unpermitted parameter: :flavor_ids
+  [1m[36mFlavor Load (0.5ms)[0m  [1m[34mSELECT "flavors".* FROM "flavors" WHERE "flavors"."id" IN ($1, $2, $3, $4)[0m  [["id", nil], ["id", 1], ["id", 2], ["id", 3]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mWingOrder Create (0.4ms)[0m  [1m[32mINSERT INTO "wing_orders" ("customer_name", "city", "state", "quantity") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["customer_name", "fsdafsd"], ["city", "sdfsdfs"], ["state", "MA"], ["quantity", 25]]
+  [1m[36mOrderFlavor Create (0.3ms)[0m  [1m[32mINSERT INTO "order_flavors" ("wing_order_id", "flavor_id") VALUES ($1, $2) RETURNING "id"[0m  [["wing_order_id", 8], ["flavor_id", 1]]
+  [1m[36mOrderFlavor Create (0.2ms)[0m  [1m[32mINSERT INTO "order_flavors" ("wing_order_id", "flavor_id") VALUES ($1, $2) RETURNING "id"[0m  [["wing_order_id", 8], ["flavor_id", 2]]
+  [1m[36mOrderFlavor Create (0.2ms)[0m  [1m[32mINSERT INTO "order_flavors" ("wing_order_id", "flavor_id") VALUES ($1, $2) RETURNING "id"[0m  [["wing_order_id", 8], ["flavor_id", 3]]
+  [1m[35m (5.6ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/wing_orders
+Completed 302 Found in 12325ms (ActiveRecord: 7.5ms)
+
+
+Started GET "/wing_orders" for 127.0.0.1 at 2019-04-17 14:38:57 -0400
+Processing by WingOrdersController#index as HTML
+  Rendering wing_orders/index.html.erb within layouts/application
+  [1m[36mWingOrder Load (0.5ms)[0m  [1m[34mSELECT "wing_orders".* FROM "wing_orders"[0m
+  [1m[36mOrderFlavor Load (0.4ms)[0m  [1m[34mSELECT "order_flavors".* FROM "order_flavors" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 1]]
+  [1m[36mOrderFlavor Load (0.2ms)[0m  [1m[34mSELECT "order_flavors".* FROM "order_flavors" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 2]]
+  [1m[36mOrderFlavor Load (0.1ms)[0m  [1m[34mSELECT "order_flavors".* FROM "order_flavors" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 3]]
+  [1m[36mOrderFlavor Load (0.1ms)[0m  [1m[34mSELECT "order_flavors".* FROM "order_flavors" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 4]]
+  [1m[36mOrderFlavor Load (0.2ms)[0m  [1m[34mSELECT "order_flavors".* FROM "order_flavors" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 5]]
+  [1m[36mOrderFlavor Load (0.2ms)[0m  [1m[34mSELECT "order_flavors".* FROM "order_flavors" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 6]]
+  Rendered wing_orders/index.html.erb within layouts/application (28.1ms)
+Completed 500 Internal Server Error in 32ms (ActiveRecord: 1.7ms)
+
+
+  
+ActionView::Template::Error (undefined method `name' for #<OrderFlavor id: 1, wing_order_id: 6, flavor_id: 2>):
+     9:     <span>Include Ranch Dressing? <%= wing_order.ranch_dressing ? "Yes" : "No" %></span>
+    10:     <h3>Flavors To Include</h3>
+    11:     <% wing_order.order_flavors.each do |flavor| %>
+    12:       <span><%= flavor.name %></span>
+    13:     <% end %>
+    14:   </div>
+    15:   <hr />
+  
+app/views/wing_orders/index.html.erb:12:in `block (2 levels) in _app_views_wing_orders_index_html_erb__4259848219354717537_70302871856020'
+app/views/wing_orders/index.html.erb:11:in `block in _app_views_wing_orders_index_html_erb__4259848219354717537_70302871856020'
+app/views/wing_orders/index.html.erb:4:in `_app_views_wing_orders_index_html_erb__4259848219354717537_70302871856020'
+Started GET "/wing_orders" for 127.0.0.1 at 2019-04-17 14:39:03 -0400
+Processing by WingOrdersController#index as HTML
+  Rendering wing_orders/index.html.erb within layouts/application
+  [1m[36mWingOrder Load (0.4ms)[0m  [1m[34mSELECT "wing_orders".* FROM "wing_orders"[0m
+  [1m[36mOrderFlavor Load (0.2ms)[0m  [1m[34mSELECT "order_flavors".* FROM "order_flavors" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 1]]
+  [1m[36mOrderFlavor Load (0.2ms)[0m  [1m[34mSELECT "order_flavors".* FROM "order_flavors" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 2]]
+  [1m[36mOrderFlavor Load (0.2ms)[0m  [1m[34mSELECT "order_flavors".* FROM "order_flavors" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 3]]
+  [1m[36mOrderFlavor Load (0.4ms)[0m  [1m[34mSELECT "order_flavors".* FROM "order_flavors" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 4]]
+  [1m[36mOrderFlavor Load (0.7ms)[0m  [1m[34mSELECT "order_flavors".* FROM "order_flavors" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 5]]
+  [1m[36mOrderFlavor Load (0.8ms)[0m  [1m[34mSELECT "order_flavors".* FROM "order_flavors" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 6]]
+  Rendered wing_orders/index.html.erb within layouts/application (14.8ms)
+Completed 500 Internal Server Error in 24ms (ActiveRecord: 2.8ms)
+
+
+  
+ActionView::Template::Error (undefined method `name' for #<OrderFlavor id: 1, wing_order_id: 6, flavor_id: 2>):
+     9:     <span>Include Ranch Dressing? <%= wing_order.ranch_dressing ? "Yes" : "No" %></span>
+    10:     <h3>Flavors To Include</h3>
+    11:     <% wing_order.order_flavors.each do |flavor| %>
+    12:       <span><%= flavor.name %></span>
+    13:     <% end %>
+    14:   </div>
+    15:   <hr />
+  
+app/views/wing_orders/index.html.erb:12:in `block (2 levels) in _app_views_wing_orders_index_html_erb__4259848219354717537_70302870945660'
+app/views/wing_orders/index.html.erb:11:in `block in _app_views_wing_orders_index_html_erb__4259848219354717537_70302870945660'
+app/views/wing_orders/index.html.erb:4:in `_app_views_wing_orders_index_html_erb__4259848219354717537_70302870945660'
+Started GET "/wing_orders/new" for 127.0.0.1 at 2019-04-17 14:39:09 -0400
+Processing by WingOrdersController#new as HTML
+  Rendering wing_orders/new.html.erb within layouts/application
+  [1m[36mFlavor Load (0.5ms)[0m  [1m[34mSELECT  "flavors".* FROM "flavors" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Flavor Load (0.0ms)[0m  [1m[34mSELECT  "flavors".* FROM "flavors" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Flavor Load (0.0ms)[0m  [1m[34mSELECT  "flavors".* FROM "flavors" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Flavor Load (0.0ms)[0m  [1m[34mSELECT  "flavors".* FROM "flavors" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Flavor Load (0.0ms)[0m  [1m[34mSELECT  "flavors".* FROM "flavors" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Flavor Load (0.0ms)[0m  [1m[34mSELECT  "flavors".* FROM "flavors" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Flavor Load (0.0ms)[0m  [1m[34mSELECT  "flavors".* FROM "flavors" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Flavor Load (0.0ms)[0m  [1m[34mSELECT  "flavors".* FROM "flavors" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mFlavor Load (0.4ms)[0m  [1m[34mSELECT "flavors".* FROM "flavors"[0m
+  Rendered wing_orders/new.html.erb within layouts/application (28888.4ms)
+Completed 200 OK in 28966ms (Views: 28957.4ms | ActiveRecord: 1.0ms)
+
+
+Started POST "/wing_orders" for 127.0.0.1 at 2019-04-17 14:41:02 -0400
+Processing by WingOrdersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"YsWJ8lhhrV5bhUsVncE0Lw2/K4twnx26Y9XwZGbqonhs/6GRQ4wkIZGEap0nAD4EE1WQUnqZUunIqhTWQyOEew==", "wing_order"=>{"customer_name"=>"safafsd", "city"=>"dsfadf", "state"=>"MA", "quantity"=>"50", "flavors"=>["", "2"]}, "commit"=>"Create Wing order"}
+Unpermitted parameter: :flavors
+  [1m[36mFlavor Load (1.1ms)[0m  [1m[34mSELECT "flavors".* FROM "flavors" WHERE "flavors"."id" IS NULL[0m
+Unpermitted parameter: :flavors
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mWingOrder Create (0.5ms)[0m  [1m[32mINSERT INTO "wing_orders" ("customer_name", "city", "state", "quantity") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["customer_name", "safafsd"], ["city", "dsfadf"], ["state", "MA"], ["quantity", 50]]
+  [1m[35m (6.5ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/wing_orders
+Completed 302 Found in 54946ms (ActiveRecord: 8.4ms)
+
+
+Started GET "/wing_orders" for 127.0.0.1 at 2019-04-17 14:41:57 -0400
+Processing by WingOrdersController#index as HTML
+  Rendering wing_orders/index.html.erb within layouts/application
+  [1m[36mWingOrder Load (4.3ms)[0m  [1m[34mSELECT "wing_orders".* FROM "wing_orders"[0m
+  [1m[36mOrderFlavor Load (0.9ms)[0m  [1m[34mSELECT "order_flavors".* FROM "order_flavors" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 1]]
+  [1m[36mOrderFlavor Load (0.6ms)[0m  [1m[34mSELECT "order_flavors".* FROM "order_flavors" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 2]]
+  [1m[36mOrderFlavor Load (0.4ms)[0m  [1m[34mSELECT "order_flavors".* FROM "order_flavors" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 3]]
+  [1m[36mOrderFlavor Load (0.5ms)[0m  [1m[34mSELECT "order_flavors".* FROM "order_flavors" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 4]]
+  [1m[36mOrderFlavor Load (0.3ms)[0m  [1m[34mSELECT "order_flavors".* FROM "order_flavors" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 5]]
+  [1m[36mOrderFlavor Load (0.3ms)[0m  [1m[34mSELECT "order_flavors".* FROM "order_flavors" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 6]]
+  Rendered wing_orders/index.html.erb within layouts/application (116.9ms)
+Completed 500 Internal Server Error in 127ms (ActiveRecord: 15.3ms)
+
+
+  
+ActionView::Template::Error (undefined method `name' for #<OrderFlavor id: 1, wing_order_id: 6, flavor_id: 2>):
+     9:     <span>Include Ranch Dressing? <%= wing_order.ranch_dressing ? "Yes" : "No" %></span>
+    10:     <h3>Flavors To Include</h3>
+    11:     <% wing_order.order_flavors.each do |flavor| %>
+    12:       <span><%= flavor.name %></span>
+    13:     <% end %>
+    14:   </div>
+    15:   <hr />
+  
+app/views/wing_orders/index.html.erb:12:in `block (2 levels) in _app_views_wing_orders_index_html_erb__4259848219354717537_70302871744960'
+app/views/wing_orders/index.html.erb:11:in `block in _app_views_wing_orders_index_html_erb__4259848219354717537_70302871744960'
+app/views/wing_orders/index.html.erb:4:in `_app_views_wing_orders_index_html_erb__4259848219354717537_70302871744960'
+Started GET "/wing_orders/new" for 127.0.0.1 at 2019-04-17 14:42:05 -0400
+Processing by WingOrdersController#new as HTML
+  Rendering wing_orders/new.html.erb within layouts/application
+  Rendered wing_orders/new.html.erb within layouts/application (137530.5ms)
+Completed 500 Internal Server Error in 137546ms (ActiveRecord: 0.0ms)
+
+
+  
+SystemExit (exit):
+  
+app/views/wing_orders/new.html.erb:18:in `block in _app_views_wing_orders_new_html_erb__3211104333874820004_70302926106800'
+app/views/wing_orders/new.html.erb:3:in `_app_views_wing_orders_new_html_erb__3211104333874820004_70302926106800'
+Started GET "/wing_orders" for 127.0.0.1 at 2019-04-17 14:44:25 -0400
+Processing by WingOrdersController#index as HTML
+  Rendering wing_orders/index.html.erb within layouts/application
+  [1m[36mWingOrder Load (0.3ms)[0m  [1m[34mSELECT "wing_orders".* FROM "wing_orders"[0m
+  [1m[36mOrderFlavor Load (0.2ms)[0m  [1m[34mSELECT "order_flavors".* FROM "order_flavors" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 1]]
+  [1m[36mOrderFlavor Load (0.2ms)[0m  [1m[34mSELECT "order_flavors".* FROM "order_flavors" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 2]]
+  [1m[36mOrderFlavor Load (0.2ms)[0m  [1m[34mSELECT "order_flavors".* FROM "order_flavors" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 3]]
+  [1m[36mOrderFlavor Load (0.1ms)[0m  [1m[34mSELECT "order_flavors".* FROM "order_flavors" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 4]]
+  [1m[36mOrderFlavor Load (0.3ms)[0m  [1m[34mSELECT "order_flavors".* FROM "order_flavors" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 5]]
+  [1m[36mOrderFlavor Load (0.2ms)[0m  [1m[34mSELECT "order_flavors".* FROM "order_flavors" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 6]]
+  Rendered wing_orders/index.html.erb within layouts/application (10.6ms)
+Completed 500 Internal Server Error in 16ms (ActiveRecord: 1.6ms)
+
+
+  
+ActionView::Template::Error (undefined method `name' for #<OrderFlavor id: 1, wing_order_id: 6, flavor_id: 2>):
+     9:     <span>Include Ranch Dressing? <%= wing_order.ranch_dressing ? "Yes" : "No" %></span>
+    10:     <h3>Flavors To Include</h3>
+    11:     <% wing_order.order_flavors.each do |flavor| %>
+    12:       <span><%= flavor.name %></span>
+    13:     <% end %>
+    14:   </div>
+    15:   <hr />
+  
+app/views/wing_orders/index.html.erb:12:in `block (2 levels) in _app_views_wing_orders_index_html_erb__4259848219354717537_70302908203100'
+app/views/wing_orders/index.html.erb:11:in `block in _app_views_wing_orders_index_html_erb__4259848219354717537_70302908203100'
+app/views/wing_orders/index.html.erb:4:in `_app_views_wing_orders_index_html_erb__4259848219354717537_70302908203100'
+Started GET "/wing_orders" for 127.0.0.1 at 2019-04-17 14:44:28 -0400
+Processing by WingOrdersController#index as HTML
+  Rendering wing_orders/index.html.erb within layouts/application
+  [1m[36mWingOrder Load (0.4ms)[0m  [1m[34mSELECT "wing_orders".* FROM "wing_orders"[0m
+  [1m[36mOrderFlavor Load (0.2ms)[0m  [1m[34mSELECT "order_flavors".* FROM "order_flavors" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 1]]
+  [1m[36mOrderFlavor Load (0.2ms)[0m  [1m[34mSELECT "order_flavors".* FROM "order_flavors" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 2]]
+  [1m[36mOrderFlavor Load (0.2ms)[0m  [1m[34mSELECT "order_flavors".* FROM "order_flavors" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 3]]
+  [1m[36mOrderFlavor Load (0.1ms)[0m  [1m[34mSELECT "order_flavors".* FROM "order_flavors" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 4]]
+  [1m[36mOrderFlavor Load (0.1ms)[0m  [1m[34mSELECT "order_flavors".* FROM "order_flavors" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 5]]
+  [1m[36mOrderFlavor Load (0.1ms)[0m  [1m[34mSELECT "order_flavors".* FROM "order_flavors" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 6]]
+  Rendered wing_orders/index.html.erb within layouts/application (9.7ms)
+Completed 500 Internal Server Error in 16ms (ActiveRecord: 1.4ms)
+
+
+  
+ActionView::Template::Error (undefined method `name' for #<OrderFlavor id: 1, wing_order_id: 6, flavor_id: 2>):
+     9:     <span>Include Ranch Dressing? <%= wing_order.ranch_dressing ? "Yes" : "No" %></span>
+    10:     <h3>Flavors To Include</h3>
+    11:     <% wing_order.order_flavors.each do |flavor| %>
+    12:       <span><%= flavor.name %></span>
+    13:     <% end %>
+    14:   </div>
+    15:   <hr />
+  
+app/views/wing_orders/index.html.erb:12:in `block (2 levels) in _app_views_wing_orders_index_html_erb__4259848219354717537_70302870205160'
+app/views/wing_orders/index.html.erb:11:in `block in _app_views_wing_orders_index_html_erb__4259848219354717537_70302870205160'
+app/views/wing_orders/index.html.erb:4:in `_app_views_wing_orders_index_html_erb__4259848219354717537_70302870205160'
+Started GET "/wing_orders" for 127.0.0.1 at 2019-04-17 14:44:32 -0400
+Processing by WingOrdersController#index as HTML
+  Rendering wing_orders/index.html.erb within layouts/application
+  [1m[36mWingOrder Load (0.5ms)[0m  [1m[34mSELECT "wing_orders".* FROM "wing_orders"[0m
+  [1m[36mOrderFlavor Load (0.6ms)[0m  [1m[34mSELECT "order_flavors".* FROM "order_flavors" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 1]]
+  [1m[36mOrderFlavor Load (0.6ms)[0m  [1m[34mSELECT "order_flavors".* FROM "order_flavors" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 2]]
+  [1m[36mOrderFlavor Load (0.2ms)[0m  [1m[34mSELECT "order_flavors".* FROM "order_flavors" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 3]]
+  [1m[36mOrderFlavor Load (0.2ms)[0m  [1m[34mSELECT "order_flavors".* FROM "order_flavors" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 4]]
+  [1m[36mOrderFlavor Load (0.2ms)[0m  [1m[34mSELECT "order_flavors".* FROM "order_flavors" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 5]]
+  [1m[36mOrderFlavor Load (0.2ms)[0m  [1m[34mSELECT "order_flavors".* FROM "order_flavors" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 6]]
+  Rendered wing_orders/index.html.erb within layouts/application (14.6ms)
+Completed 500 Internal Server Error in 20ms (ActiveRecord: 2.5ms)
+
+
+  
+ActionView::Template::Error (undefined method `name' for #<OrderFlavor id: 1, wing_order_id: 6, flavor_id: 2>):
+     9:     <span>Include Ranch Dressing? <%= wing_order.ranch_dressing ? "Yes" : "No" %></span>
+    10:     <h3>Flavors To Include</h3>
+    11:     <% wing_order.order_flavors.each do |flavor| %>
+    12:       <span><%= flavor.name %></span>
+    13:     <% end %>
+    14:   </div>
+    15:   <hr />
+  
+app/views/wing_orders/index.html.erb:12:in `block (2 levels) in _app_views_wing_orders_index_html_erb__4259848219354717537_70302855578360'
+app/views/wing_orders/index.html.erb:11:in `block in _app_views_wing_orders_index_html_erb__4259848219354717537_70302855578360'
+app/views/wing_orders/index.html.erb:4:in `_app_views_wing_orders_index_html_erb__4259848219354717537_70302855578360'
+Started GET "/wing_orders" for 127.0.0.1 at 2019-04-17 14:45:26 -0400
+Processing by WingOrdersController#index as HTML
+  Rendering wing_orders/index.html.erb within layouts/application
+  [1m[36mWingOrder Load (0.5ms)[0m  [1m[34mSELECT "wing_orders".* FROM "wing_orders"[0m
+  [1m[36mFlavor Load (0.3ms)[0m  [1m[34mSELECT "flavors".* FROM "flavors" INNER JOIN "order_flavors" ON "flavors"."id" = "order_flavors"."flavor_id" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 1]]
+  [1m[36mFlavor Load (0.3ms)[0m  [1m[34mSELECT "flavors".* FROM "flavors" INNER JOIN "order_flavors" ON "flavors"."id" = "order_flavors"."flavor_id" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 2]]
+  [1m[36mFlavor Load (0.3ms)[0m  [1m[34mSELECT "flavors".* FROM "flavors" INNER JOIN "order_flavors" ON "flavors"."id" = "order_flavors"."flavor_id" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 3]]
+  [1m[36mFlavor Load (0.5ms)[0m  [1m[34mSELECT "flavors".* FROM "flavors" INNER JOIN "order_flavors" ON "flavors"."id" = "order_flavors"."flavor_id" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 4]]
+  [1m[36mFlavor Load (0.5ms)[0m  [1m[34mSELECT "flavors".* FROM "flavors" INNER JOIN "order_flavors" ON "flavors"."id" = "order_flavors"."flavor_id" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 5]]
+  [1m[36mFlavor Load (0.3ms)[0m  [1m[34mSELECT "flavors".* FROM "flavors" INNER JOIN "order_flavors" ON "flavors"."id" = "order_flavors"."flavor_id" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 6]]
+  [1m[36mFlavor Load (0.3ms)[0m  [1m[34mSELECT "flavors".* FROM "flavors" INNER JOIN "order_flavors" ON "flavors"."id" = "order_flavors"."flavor_id" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 7]]
+  [1m[36mFlavor Load (0.2ms)[0m  [1m[34mSELECT "flavors".* FROM "flavors" INNER JOIN "order_flavors" ON "flavors"."id" = "order_flavors"."flavor_id" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 8]]
+  [1m[36mFlavor Load (0.2ms)[0m  [1m[34mSELECT "flavors".* FROM "flavors" INNER JOIN "order_flavors" ON "flavors"."id" = "order_flavors"."flavor_id" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 9]]
+  Rendered wing_orders/index.html.erb within layouts/application (44.8ms)
+Completed 200 OK in 101ms (Views: 92.8ms | ActiveRecord: 6.4ms)
+
+
+Started GET "/wing_orders/new" for 127.0.0.1 at 2019-04-17 14:45:29 -0400
+Processing by WingOrdersController#new as HTML
+  Rendering wing_orders/new.html.erb within layouts/application
+  [1m[36mFlavor Load (0.4ms)[0m  [1m[34mSELECT "flavors".* FROM "flavors"[0m
+  Rendered wing_orders/new.html.erb within layouts/application (4.8ms)
+Completed 200 OK in 49ms (Views: 46.6ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/wing_orders" for 127.0.0.1 at 2019-04-17 14:46:04 -0400
+Processing by WingOrdersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"nRBGQ0oAK8cjahysFG/WX3GEgYIynkINV6eAjOfm9FWTKm4gUe2iuOlrPSSurtx0b246WziYDV782GQ+wi/SVg==", "wing_order"=>{"customer_name"=>"efasf", "city"=>"sdfsdf", "state"=>"MA", "quantity"=>"25", "flavors"=>["2"]}, "commit"=>"Create Wing order"}
+Unpermitted parameter: :flavors
+  [1m[36mFlavor Load (3.2ms)[0m  [1m[34mSELECT "flavors".* FROM "flavors" WHERE "flavors"."id" IS NULL[0m
+Unpermitted parameter: :flavors
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mWingOrder Create (6.3ms)[0m  [1m[32mINSERT INTO "wing_orders" ("customer_name", "city", "state", "quantity") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["customer_name", "efasf"], ["city", "sdfsdf"], ["state", "MA"], ["quantity", 25]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/wing_orders
+Completed 302 Found in 15548ms (ActiveRecord: 10.3ms)
+
+
+Started GET "/wing_orders" for 127.0.0.1 at 2019-04-17 14:46:19 -0400
+Processing by WingOrdersController#index as HTML
+  Rendering wing_orders/index.html.erb within layouts/application
+  [1m[36mWingOrder Load (0.4ms)[0m  [1m[34mSELECT "wing_orders".* FROM "wing_orders"[0m
+  [1m[36mFlavor Load (0.4ms)[0m  [1m[34mSELECT "flavors".* FROM "flavors" INNER JOIN "order_flavors" ON "flavors"."id" = "order_flavors"."flavor_id" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 1]]
+  [1m[36mFlavor Load (0.2ms)[0m  [1m[34mSELECT "flavors".* FROM "flavors" INNER JOIN "order_flavors" ON "flavors"."id" = "order_flavors"."flavor_id" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 2]]
+  [1m[36mFlavor Load (0.2ms)[0m  [1m[34mSELECT "flavors".* FROM "flavors" INNER JOIN "order_flavors" ON "flavors"."id" = "order_flavors"."flavor_id" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 3]]
+  [1m[36mFlavor Load (0.2ms)[0m  [1m[34mSELECT "flavors".* FROM "flavors" INNER JOIN "order_flavors" ON "flavors"."id" = "order_flavors"."flavor_id" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 4]]
+  [1m[36mFlavor Load (0.2ms)[0m  [1m[34mSELECT "flavors".* FROM "flavors" INNER JOIN "order_flavors" ON "flavors"."id" = "order_flavors"."flavor_id" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 5]]
+  [1m[36mFlavor Load (0.6ms)[0m  [1m[34mSELECT "flavors".* FROM "flavors" INNER JOIN "order_flavors" ON "flavors"."id" = "order_flavors"."flavor_id" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 6]]
+  [1m[36mFlavor Load (0.3ms)[0m  [1m[34mSELECT "flavors".* FROM "flavors" INNER JOIN "order_flavors" ON "flavors"."id" = "order_flavors"."flavor_id" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 7]]
+  [1m[36mFlavor Load (0.4ms)[0m  [1m[34mSELECT "flavors".* FROM "flavors" INNER JOIN "order_flavors" ON "flavors"."id" = "order_flavors"."flavor_id" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 8]]
+  [1m[36mFlavor Load (0.2ms)[0m  [1m[34mSELECT "flavors".* FROM "flavors" INNER JOIN "order_flavors" ON "flavors"."id" = "order_flavors"."flavor_id" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 9]]
+  [1m[36mFlavor Load (0.2ms)[0m  [1m[34mSELECT "flavors".* FROM "flavors" INNER JOIN "order_flavors" ON "flavors"."id" = "order_flavors"."flavor_id" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 10]]
+  Rendered wing_orders/index.html.erb within layouts/application (32.5ms)
+Completed 200 OK in 96ms (Views: 91.7ms | ActiveRecord: 3.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2019-04-17 15:53:27 -0400
+  
+LoadError (cannot load such file -- /Users/arkhamsrazor/challenges/Playground/wings-order-form/config/routes.rb):
+  
+activesupport (5.2.0) lib/active_support/dependencies.rb:277:in `load'
+activesupport (5.2.0) lib/active_support/dependencies.rb:277:in `block in load'
+activesupport (5.2.0) lib/active_support/dependencies.rb:249:in `load_dependency'
+activesupport (5.2.0) lib/active_support/dependencies.rb:277:in `load'
+railties (5.2.0) lib/rails/application/routes_reloader.rb:57:in `block in load_paths'
+railties (5.2.0) lib/rails/application/routes_reloader.rb:57:in `each'
+railties (5.2.0) lib/rails/application/routes_reloader.rb:57:in `load_paths'
+railties (5.2.0) lib/rails/application/routes_reloader.rb:20:in `reload!'
+railties (5.2.0) lib/rails/application/routes_reloader.rb:43:in `block in updater'
+activesupport (5.2.0) lib/active_support/file_update_checker.rb:83:in `execute'
+railties (5.2.0) lib/rails/application/routes_reloader.rb:27:in `execute'
+railties (5.2.0) lib/rails/application/finisher.rb:143:in `block (2 levels) in <module:Finisher>'
+activesupport (5.2.0) lib/active_support/callbacks.rb:426:in `instance_exec'
+activesupport (5.2.0) lib/active_support/callbacks.rb:426:in `block in make_lambda'
+activesupport (5.2.0) lib/active_support/callbacks.rb:198:in `block (2 levels) in halting'
+activesupport (5.2.0) lib/active_support/callbacks.rb:606:in `block (2 levels) in default_terminator'
+activesupport (5.2.0) lib/active_support/callbacks.rb:605:in `catch'
+activesupport (5.2.0) lib/active_support/callbacks.rb:605:in `block in default_terminator'
+activesupport (5.2.0) lib/active_support/callbacks.rb:199:in `block in halting'
+activesupport (5.2.0) lib/active_support/callbacks.rb:513:in `block in invoke_before'
+activesupport (5.2.0) lib/active_support/callbacks.rb:513:in `each'
+activesupport (5.2.0) lib/active_support/callbacks.rb:513:in `invoke_before'
+activesupport (5.2.0) lib/active_support/callbacks.rb:131:in `run_callbacks'
+activesupport (5.2.0) lib/active_support/execution_wrapper.rb:110:in `run!'
+activesupport (5.2.0) lib/active_support/reloader.rb:115:in `run!'
+activesupport (5.2.0) lib/active_support/execution_wrapper.rb:72:in `block in run!'
+activesupport (5.2.0) lib/active_support/execution_wrapper.rb:69:in `tap'
+activesupport (5.2.0) lib/active_support/execution_wrapper.rb:69:in `run!'
+activesupport (5.2.0) lib/active_support/reloader.rb:64:in `run!'
+actionpack (5.2.0) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.0) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.5) lib/rack/method_override.rb:22:in `call'
+rack (2.0.5) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.0) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.5) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.0) lib/rails/engine.rb:524:in `call'
+puma (3.12.0) lib/puma/configuration.rb:225:in `call'
+puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
+puma (3.12.0) lib/puma/server.rb:472:in `process_client'
+puma (3.12.0) lib/puma/server.rb:332:in `block in run'
+puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+Started GET "/favicon.ico" for 127.0.0.1 at 2019-04-17 15:53:27 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+actionpack (5.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.0) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.5) lib/rack/method_override.rb:22:in `call'
+rack (2.0.5) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.0) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.5) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.0) lib/rails/engine.rb:524:in `call'
+puma (3.12.0) lib/puma/configuration.rb:225:in `call'
+puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
+puma (3.12.0) lib/puma/server.rb:472:in `process_client'
+puma (3.12.0) lib/puma/server.rb:332:in `block in run'
+puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+Started GET "/" for 127.0.0.1 at 2019-04-17 15:53:28 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/"):
+  
+actionpack (5.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.0) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.5) lib/rack/method_override.rb:22:in `call'
+rack (2.0.5) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.0) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.5) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.0) lib/rails/engine.rb:524:in `call'
+puma (3.12.0) lib/puma/configuration.rb:225:in `call'
+puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
+puma (3.12.0) lib/puma/server.rb:472:in `process_client'
+puma (3.12.0) lib/puma/server.rb:332:in `block in run'
+puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+Started GET "/" for 127.0.0.1 at 2019-04-17 15:53:29 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/"):
+  
+actionpack (5.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.0) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.5) lib/rack/method_override.rb:22:in `call'
+rack (2.0.5) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.0) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.5) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.0) lib/rails/engine.rb:524:in `call'
+puma (3.12.0) lib/puma/configuration.rb:225:in `call'
+puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
+puma (3.12.0) lib/puma/server.rb:472:in `process_client'
+puma (3.12.0) lib/puma/server.rb:332:in `block in run'
+puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+Started GET "/favicon.ico" for 127.0.0.1 at 2019-04-17 15:53:29 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+actionpack (5.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.0) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.0) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.5) lib/rack/method_override.rb:22:in `call'
+rack (2.0.5) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.0) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.0) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.5) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.0) lib/rails/engine.rb:524:in `call'
+puma (3.12.0) lib/puma/configuration.rb:225:in `call'
+puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
+puma (3.12.0) lib/puma/server.rb:472:in `process_client'
+puma (3.12.0) lib/puma/server.rb:332:in `block in run'
+puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+Started GET "/" for 127.0.0.1 at 2019-04-17 15:53:48 -0400
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by WingOrdersController#index as HTML
+  Rendering wing_orders/index.html.erb within layouts/application
+  [1m[36mWingOrder Load (0.6ms)[0m  [1m[34mSELECT "wing_orders".* FROM "wing_orders"[0m
+  [1m[36mFlavor Load (0.6ms)[0m  [1m[34mSELECT "flavors".* FROM "flavors" INNER JOIN "order_flavors" ON "flavors"."id" = "order_flavors"."flavor_id" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 1]]
+  [1m[36mFlavor Load (0.3ms)[0m  [1m[34mSELECT "flavors".* FROM "flavors" INNER JOIN "order_flavors" ON "flavors"."id" = "order_flavors"."flavor_id" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 2]]
+  [1m[36mFlavor Load (0.2ms)[0m  [1m[34mSELECT "flavors".* FROM "flavors" INNER JOIN "order_flavors" ON "flavors"."id" = "order_flavors"."flavor_id" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 3]]
+  [1m[36mFlavor Load (0.2ms)[0m  [1m[34mSELECT "flavors".* FROM "flavors" INNER JOIN "order_flavors" ON "flavors"."id" = "order_flavors"."flavor_id" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 4]]
+  [1m[36mFlavor Load (0.3ms)[0m  [1m[34mSELECT "flavors".* FROM "flavors" INNER JOIN "order_flavors" ON "flavors"."id" = "order_flavors"."flavor_id" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 5]]
+  [1m[36mFlavor Load (0.3ms)[0m  [1m[34mSELECT "flavors".* FROM "flavors" INNER JOIN "order_flavors" ON "flavors"."id" = "order_flavors"."flavor_id" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 6]]
+  [1m[36mFlavor Load (0.3ms)[0m  [1m[34mSELECT "flavors".* FROM "flavors" INNER JOIN "order_flavors" ON "flavors"."id" = "order_flavors"."flavor_id" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 7]]
+  [1m[36mFlavor Load (0.2ms)[0m  [1m[34mSELECT "flavors".* FROM "flavors" INNER JOIN "order_flavors" ON "flavors"."id" = "order_flavors"."flavor_id" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 8]]
+  [1m[36mFlavor Load (0.3ms)[0m  [1m[34mSELECT "flavors".* FROM "flavors" INNER JOIN "order_flavors" ON "flavors"."id" = "order_flavors"."flavor_id" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 9]]
+  [1m[36mFlavor Load (0.2ms)[0m  [1m[34mSELECT "flavors".* FROM "flavors" INNER JOIN "order_flavors" ON "flavors"."id" = "order_flavors"."flavor_id" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 10]]
+  Rendered wing_orders/index.html.erb within layouts/application (85.5ms)
+Completed 200 OK in 572ms (Views: 544.6ms | ActiveRecord: 13.4ms)
+
+
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (8.7ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (8391.6ms)[0m  [1m[35mDROP DATABASE IF EXISTS "wings_order_form_development"[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (195.6ms)[0m  [1m[35mDROP DATABASE IF EXISTS "wings_order_form_development"[0m
+  [1m[35m (200.1ms)[0m  [1m[35mDROP DATABASE IF EXISTS "wings_order_form_test"[0m
+  [1m[35m (502.3ms)[0m  [1m[35mCREATE DATABASE "wings_order_form_development" ENCODING = 'unicode'[0m
+  [1m[35m (404.1ms)[0m  [1m[35mCREATE DATABASE "wings_order_form_test" ENCODING = 'unicode'[0m
+  [1m[35m (6.3ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (3.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(7796248672378347825)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateWingOrders (20151214002037)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (14.4ms)[0m  [1m[35mCREATE TABLE "wing_orders" ("id" serial NOT NULL PRIMARY KEY, "customer_name" character varying NOT NULL, "city" character varying NOT NULL, "state" character varying NOT NULL, "quantity" integer NOT NULL, "ranch_dressing" boolean DEFAULT FALSE NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20151214002037"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateFlavors (20151214003153)
+  [1m[35m (5.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (13.4ms)[0m  [1m[35mCREATE TABLE "flavors" ("id" serial NOT NULL PRIMARY KEY, "name" character varying NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20151214003153"]]
+  [1m[35m (4.6ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateOrderFlavors (20151214003528)
+  [1m[35m (5.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (7.0ms)[0m  [1m[35mCREATE TABLE "order_flavors" ("id" serial NOT NULL PRIMARY KEY, "wing_order_id" integer NOT NULL, "flavor_id" integer NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20151214003528"]]
+  [1m[35m (5.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2019-04-17 19:54:51.578113"], ["updated_at", "2019-04-17 19:54:51.578113"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(7796248672378347825)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(7796248672378347825)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateOrderFlavors (20151214003528)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.4ms)[0m  [1m[35mDROP TABLE "order_flavors"[0m
+  [1m[36mActiveRecord::SchemaMigration Destroy (0.4ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = $1[0m  [["version", "20151214003528"]]
+  [1m[35m (6.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_advisory_unlock(7796248672378347825)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(7796248672378347825)[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateOrderFlavors (20151214003528)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (8.4ms)[0m  [1m[35mCREATE TABLE "order_flavors" ("id" serial NOT NULL PRIMARY KEY, "wing_order_id" integer NOT NULL, "flavor_id" integer NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20151214003528"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(7796248672378347825)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for 127.0.0.1 at 2019-04-17 15:55:07 -0400
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by WingOrdersController#index as HTML
+  Rendering wing_orders/index.html.erb within layouts/application
+  [1m[36mWingOrder Load (0.5ms)[0m  [1m[34mSELECT "wing_orders".* FROM "wing_orders"[0m
+  Rendered wing_orders/index.html.erb within layouts/application (7.1ms)
+Completed 200 OK in 342ms (Views: 330.8ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/wing_orders/new" for 127.0.0.1 at 2019-04-17 15:55:11 -0400
+Processing by WingOrdersController#new as HTML
+  Rendering wing_orders/new.html.erb within layouts/application
+  [1m[36mFlavor Load (0.7ms)[0m  [1m[34mSELECT "flavors".* FROM "flavors"[0m
+  Rendered wing_orders/new.html.erb within layouts/application (5.6ms)
+Completed 200 OK in 114ms (Views: 90.7ms | ActiveRecord: 7.0ms)
+
+
+Started POST "/wing_orders" for 127.0.0.1 at 2019-04-17 15:55:22 -0400
+Processing by WingOrdersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"HQqRn9ZQXMQMouwwuW/716j3uU1ZpBPdY2HZQDuYmhITMLn8zb3Vu8ajzbgDrvH8th0ClFOiXI7IHj3yHlG8EQ==", "wing_order"=>{"customer_name"=>"Patrick Whelan", "city"=>"Saugus", "state"=>"MA", "quantity"=>"10", "ranch_dressing"=>"1", "flavor_ids"=>[""]}, "commit"=>"Place Order"}
+Unpermitted parameter: :flavor_ids
+  [1m[36mFlavor Load (0.6ms)[0m  [1m[34mSELECT "flavors".* FROM "flavors" WHERE "flavors"."id" IS NULL[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mWingOrder Create (0.9ms)[0m  [1m[32mINSERT INTO "wing_orders" ("customer_name", "city", "state", "quantity", "ranch_dressing") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["customer_name", "Patrick Whelan"], ["city", "Saugus"], ["state", "MA"], ["quantity", 10], ["ranch_dressing", true]]
+  [1m[35m (11.4ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/wing_orders
+Completed 302 Found in 47ms (ActiveRecord: 13.1ms)
+
+
+Started GET "/wing_orders" for 127.0.0.1 at 2019-04-17 15:55:22 -0400
+Processing by WingOrdersController#index as HTML
+  Rendering wing_orders/index.html.erb within layouts/application
+  [1m[36mWingOrder Load (1.2ms)[0m  [1m[34mSELECT "wing_orders".* FROM "wing_orders"[0m
+  [1m[36mFlavor Load (0.4ms)[0m  [1m[34mSELECT "flavors".* FROM "flavors" INNER JOIN "order_flavors" ON "flavors"."id" = "order_flavors"."flavor_id" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 1]]
+  Rendered wing_orders/index.html.erb within layouts/application (30.2ms)
+Completed 200 OK in 98ms (Views: 90.3ms | ActiveRecord: 5.3ms)
+
+
+Started GET "/wing_orders/new" for 127.0.0.1 at 2019-04-17 15:59:23 -0400
+Processing by WingOrdersController#new as HTML
+  Rendering wing_orders/new.html.erb within layouts/application
+  Rendered wing_orders/new.html.erb within layouts/application (16.3ms)
+Completed 500 Internal Server Error in 21ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (wrong number of arguments (given 0, expected 1..2)):
+    3: <%= form_for(@wing_order) do |f| %>
+    4: <div class="row">
+    5:   <%= f.label :customer_name %>
+    6:   <%= f.text_area %>
+    7:     
+    8: </div>
+    9: 
+  
+app/views/wing_orders/new.html.erb:6:in `block in _app_views_wing_orders_new_html_erb__4426370657391836035_70332800142420'
+app/views/wing_orders/new.html.erb:3:in `_app_views_wing_orders_new_html_erb__4426370657391836035_70332800142420'
+Started GET "/wing_orders/new" for 127.0.0.1 at 2019-04-17 16:00:59 -0400
+Processing by WingOrdersController#new as HTML
+  Rendering wing_orders/new.html.erb within layouts/application
+  Rendered wing_orders/new.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 107ms (Views: 93.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/wing_orders/new" for 127.0.0.1 at 2019-04-17 16:01:13 -0400
+Processing by WingOrdersController#new as HTML
+  Rendering wing_orders/new.html.erb within layouts/application
+  Rendered wing_orders/new.html.erb within layouts/application (9.0ms)
+Completed 200 OK in 65ms (Views: 62.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/wing_orders/new" for 127.0.0.1 at 2019-04-17 16:02:53 -0400
+Processing by WingOrdersController#new as HTML
+  Rendering wing_orders/new.html.erb within layouts/application
+  Rendered wing_orders/new.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 57ms (Views: 55.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/wing_orders/new" for 127.0.0.1 at 2019-04-17 16:05:51 -0400
+Processing by WingOrdersController#new as HTML
+  Rendering wing_orders/new.html.erb within layouts/application
+  Rendered wing_orders/new.html.erb within layouts/application (4.4ms)
+Completed 200 OK in 79ms (Views: 76.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/wing_orders/new" for 127.0.0.1 at 2019-04-17 16:06:53 -0400
+Processing by WingOrdersController#new as HTML
+  Rendering wing_orders/new.html.erb within layouts/application
+  Rendered wing_orders/new.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 43ms (Views: 40.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/wing_orders/new" for 127.0.0.1 at 2019-04-17 16:11:10 -0400
+Processing by WingOrdersController#new as HTML
+  Rendering wing_orders/new.html.erb within layouts/application
+  Rendered wing_orders/new.html.erb within layouts/application (11.4ms)
+Completed 500 Internal Server Error in 20ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `id' for [10, "10 wings"]:Array):
+    18: 
+    19: <div class="row">
+    20:   <%= f.label :quantity%>
+    21:   <%= f.collection_radio_buttons(:quantity, @quantity_collection, :id, :name)  %>
+    22: </div>
+    23: 
+    24: 
+  
+app/views/wing_orders/new.html.erb:21:in `block in _app_views_wing_orders_new_html_erb__4426370657391836035_70332747750720'
+app/views/wing_orders/new.html.erb:3:in `_app_views_wing_orders_new_html_erb__4426370657391836035_70332747750720'
+Started GET "/wing_orders/new" for 127.0.0.1 at 2019-04-17 16:11:47 -0400
+Processing by WingOrdersController#new as HTML
+  Rendering wing_orders/new.html.erb within layouts/application
+  Rendered wing_orders/new.html.erb within layouts/application (108.4ms)
+Completed 200 OK in 153ms (Views: 150.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/wing_orders/new" for 127.0.0.1 at 2019-04-17 16:18:07 -0400
+Processing by WingOrdersController#new as HTML
+  Rendering wing_orders/new.html.erb within layouts/application
+  [1m[36mFlavor Load (0.6ms)[0m  [1m[34mSELECT  "flavors".* FROM "flavors" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Flavor Load (0.0ms)[0m  [1m[34mSELECT  "flavors".* FROM "flavors" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Flavor Load (0.0ms)[0m  [1m[34mSELECT  "flavors".* FROM "flavors" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Flavor Load (0.0ms)[0m  [1m[34mSELECT  "flavors".* FROM "flavors" LIMIT $1[0m  [["LIMIT", 11]]
+  Rendered wing_orders/new.html.erb within layouts/application (141.4ms)
+Completed 500 Internal Server Error in 148ms (ActiveRecord: 0.6ms)
+
+
+  
+ActionView::Template::Error (undefined method `checkbox' for #<ActionView::Helpers::FormBuilder:0x007fef3d659670>
+Did you mean?  check_box):
+    23: 
+    24: <div class="row">
+    25:   <%= f.label :ranch_dressing%>
+    26:   <%= f.checkbox :ranch_dressing %>
+    27: </div>
+    28: 
+    29: 
+  
+app/views/wing_orders/new.html.erb:26:in `block in _app_views_wing_orders_new_html_erb__4426370657391836035_70332752073280'
+app/views/wing_orders/new.html.erb:3:in `_app_views_wing_orders_new_html_erb__4426370657391836035_70332752073280'
+Started GET "/wing_orders/new" for 127.0.0.1 at 2019-04-17 16:18:20 -0400
+Processing by WingOrdersController#new as HTML
+  Rendering wing_orders/new.html.erb within layouts/application
+  [1m[36mFlavor Load (0.5ms)[0m  [1m[34mSELECT  "flavors".* FROM "flavors" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Flavor Load (0.0ms)[0m  [1m[34mSELECT  "flavors".* FROM "flavors" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Flavor Load (0.0ms)[0m  [1m[34mSELECT  "flavors".* FROM "flavors" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Flavor Load (0.0ms)[0m  [1m[34mSELECT  "flavors".* FROM "flavors" LIMIT $1[0m  [["LIMIT", 11]]
+  Rendered wing_orders/new.html.erb within layouts/application (129.6ms)
+Completed 500 Internal Server Error in 136ms (ActiveRecord: 0.5ms)
+
+
+  
+ActionView::Template::Error (undefined method `checkbox' for #<ActionView::Helpers::FormBuilder:0x007fef443590b8>
+Did you mean?  check_box):
+    23: 
+    24: <div class="row">
+    25:   <%= f.label :ranch_dressing%>
+    26:   <%= f.checkbox(:ranch_dressing)%>
+    27: </div>
+    28: 
+    29: 
+  
+app/views/wing_orders/new.html.erb:26:in `block in _app_views_wing_orders_new_html_erb__4426370657391836035_70332808628040'
+app/views/wing_orders/new.html.erb:3:in `_app_views_wing_orders_new_html_erb__4426370657391836035_70332808628040'
+Started GET "/wing_orders/new" for 127.0.0.1 at 2019-04-17 16:18:25 -0400
+Processing by WingOrdersController#new as HTML
+  Rendering wing_orders/new.html.erb within layouts/application
+  Rendered wing_orders/new.html.erb within layouts/application (9.6ms)
+Completed 200 OK in 71ms (Views: 69.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/wing_orders/new" for 127.0.0.1 at 2019-04-17 16:24:40 -0400
+Processing by WingOrdersController#new as HTML
+  Rendering wing_orders/new.html.erb within layouts/application
+  [1m[36mFlavor Load (0.5ms)[0m  [1m[34mSELECT "flavors".* FROM "flavors"[0m
+  Rendered wing_orders/new.html.erb within layouts/application (5.2ms)
+Completed 200 OK in 42ms (Views: 40.3ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/wing_orders/new" for 127.0.0.1 at 2019-04-17 16:25:13 -0400
+Processing by WingOrdersController#new as HTML
+  Rendering wing_orders/new.html.erb within layouts/application
+  Rendered wing_orders/new.html.erb within layouts/application (0.9ms)
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 0.0ms)
+
+
+  
+SyntaxError (/Users/arkhamsrazor/launch/clinics/clinic-wings-order-form/app/views/wing_orders/new.html.erb:30: syntax error, unexpected tSTRING_BEG, expecting ')'
+....append=( f.label :flavor_ids "");@output_buffer.safe_append...
+...                               ^):
+  
+app/views/wing_orders/new.html.erb:30: syntax error, unexpected tSTRING_BEG, expecting ')'
+Started GET "/wing_orders/new" for 127.0.0.1 at 2019-04-17 16:25:19 -0400
+Processing by WingOrdersController#new as HTML
+  Rendering wing_orders/new.html.erb within layouts/application
+  [1m[36mFlavor Load (1.0ms)[0m  [1m[34mSELECT "flavors".* FROM "flavors"[0m
+  Rendered wing_orders/new.html.erb within layouts/application (9.8ms)
+Completed 200 OK in 61ms (Views: 58.3ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/wing_orders/new" for 127.0.0.1 at 2019-04-17 16:25:33 -0400
+Processing by WingOrdersController#new as HTML
+  Rendering wing_orders/new.html.erb within layouts/application
+  [1m[36mFlavor Load (0.7ms)[0m  [1m[34mSELECT "flavors".* FROM "flavors"[0m
+  Rendered wing_orders/new.html.erb within layouts/application (5.4ms)
+Completed 200 OK in 46ms (Views: 43.0ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/wing_orders/new" for 127.0.0.1 at 2019-04-17 16:26:08 -0400
+Processing by WingOrdersController#new as HTML
+  Rendering wing_orders/new.html.erb within layouts/application
+  [1m[36mFlavor Load (0.7ms)[0m  [1m[34mSELECT "flavors".* FROM "flavors"[0m
+  Rendered wing_orders/new.html.erb within layouts/application (6.6ms)
+Completed 200 OK in 53ms (Views: 49.0ms | ActiveRecord: 0.7ms)
+
+
+  [1m[36mFlavor Load (0.7ms)[0m  [1m[34mSELECT "flavors".* FROM "flavors"[0m
+  [1m[36mWingOrder Load (0.6ms)[0m  [1m[34mSELECT "wing_orders".* FROM "wing_orders"[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mFlavor Load (0.3ms)[0m  [1m[34mSELECT  "flavors".* FROM "flavors" WHERE "flavors"."name" = $1 LIMIT $2[0m  [["name", "BBQ"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFlavor Create (0.5ms)[0m  [1m[32mINSERT INTO "flavors" ("name") VALUES ($1) RETURNING "id"[0m  [["name", "BBQ"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mFlavor Load (0.2ms)[0m  [1m[34mSELECT  "flavors".* FROM "flavors" WHERE "flavors"."name" = $1 LIMIT $2[0m  [["name", "Honey BBQ"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFlavor Create (0.3ms)[0m  [1m[32mINSERT INTO "flavors" ("name") VALUES ($1) RETURNING "id"[0m  [["name", "Honey BBQ"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mFlavor Load (0.3ms)[0m  [1m[34mSELECT  "flavors".* FROM "flavors" WHERE "flavors"."name" = $1 LIMIT $2[0m  [["name", "Sweet Chili"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFlavor Create (0.3ms)[0m  [1m[32mINSERT INTO "flavors" ("name") VALUES ($1) RETURNING "id"[0m  [["name", "Sweet Chili"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mFlavor Load (0.3ms)[0m  [1m[34mSELECT  "flavors".* FROM "flavors" WHERE "flavors"."name" = $1 LIMIT $2[0m  [["name", "Buffalo"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFlavor Create (0.3ms)[0m  [1m[32mINSERT INTO "flavors" ("name") VALUES ($1) RETURNING "id"[0m  [["name", "Buffalo"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/wing_orders/new" for 127.0.0.1 at 2019-04-17 16:28:16 -0400
+Processing by WingOrdersController#new as HTML
+  Rendering wing_orders/new.html.erb within layouts/application
+  [1m[36mFlavor Load (0.5ms)[0m  [1m[34mSELECT "flavors".* FROM "flavors"[0m
+  Rendered wing_orders/new.html.erb within layouts/application (12.2ms)
+Completed 200 OK in 56ms (Views: 52.9ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/wing_orders/new" for 127.0.0.1 at 2019-04-17 16:29:22 -0400
+Processing by WingOrdersController#new as HTML
+  Rendering wing_orders/new.html.erb within layouts/application
+  [1m[36mFlavor Load (0.5ms)[0m  [1m[34mSELECT "flavors".* FROM "flavors"[0m
+  Rendered wing_orders/new.html.erb within layouts/application (6.2ms)
+Completed 200 OK in 63ms (Views: 61.0ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/wing_orders/new" for 127.0.0.1 at 2019-04-17 16:29:52 -0400
+Processing by WingOrdersController#new as HTML
+  Rendering wing_orders/new.html.erb within layouts/application
+  [1m[36mFlavor Load (0.4ms)[0m  [1m[34mSELECT "flavors".* FROM "flavors"[0m
+  Rendered wing_orders/new.html.erb within layouts/application (6.0ms)
+Completed 200 OK in 54ms (Views: 51.2ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/wing_orders" for 127.0.0.1 at 2019-04-17 16:30:16 -0400
+Processing by WingOrdersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"muWz+EVZ5X9LAnrqPxVCUQOpCoLdP68rDH00Ez/puY6U35ubXrRsAIEDW2KF1Eh6HUOxW9c54HinAtChGiCfjQ==", "wing_order"=>{"customer_name"=>"Patrick Whelan", "city"=>"Saugus", "state"=>"MA", "quantity"=>"100", "ranch_dressing"=>"1", "flavors"=>["", "2", "3", "4"]}, "commit"=>"Place Order"}
+Unpermitted parameter: :flavors
+  [1m[36mFlavor Load (0.7ms)[0m  [1m[34mSELECT "flavors".* FROM "flavors" WHERE "flavors"."id" IS NULL[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mWingOrder Create (1.4ms)[0m  [1m[32mINSERT INTO "wing_orders" ("customer_name", "city", "state", "quantity", "ranch_dressing") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["customer_name", "Patrick Whelan"], ["city", "Saugus"], ["state", "MA"], ["quantity", 100], ["ranch_dressing", true]]
+  [1m[35m (6.0ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/wing_orders
+Completed 302 Found in 15ms (ActiveRecord: 8.4ms)
+
+
+Started GET "/wing_orders" for 127.0.0.1 at 2019-04-17 16:30:16 -0400
+Processing by WingOrdersController#index as HTML
+  Rendering wing_orders/index.html.erb within layouts/application
+  [1m[36mWingOrder Load (0.4ms)[0m  [1m[34mSELECT "wing_orders".* FROM "wing_orders"[0m
+  [1m[36mFlavor Load (0.5ms)[0m  [1m[34mSELECT "flavors".* FROM "flavors" INNER JOIN "order_flavors" ON "flavors"."id" = "order_flavors"."flavor_id" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 1]]
+  [1m[36mFlavor Load (0.3ms)[0m  [1m[34mSELECT "flavors".* FROM "flavors" INNER JOIN "order_flavors" ON "flavors"."id" = "order_flavors"."flavor_id" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 2]]
+  Rendered wing_orders/index.html.erb within layouts/application (6.1ms)
+Completed 200 OK in 46ms (Views: 41.7ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/wing_orders/new" for 127.0.0.1 at 2019-04-17 16:30:56 -0400
+Processing by WingOrdersController#new as HTML
+  Rendering wing_orders/new.html.erb within layouts/application
+  [1m[36mFlavor Load (0.7ms)[0m  [1m[34mSELECT "flavors".* FROM "flavors"[0m
+  Rendered wing_orders/new.html.erb within layouts/application (13.6ms)
+Completed 200 OK in 68ms (Views: 44.4ms | ActiveRecord: 9.9ms)
+
+
+Started POST "/wing_orders" for 127.0.0.1 at 2019-04-17 16:31:02 -0400
+Processing by WingOrdersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"PJP4CBV4k0i5fHFPZFKKh/iVyty3iO0HrFdnVRVGWyEyqdBrDpUaN3N9UMfek4Cs5n9xBb2OolQHKIPnMI99Ig==", "wing_order"=>{"customer_name"=>"Patrick Whelan", "city"=>"Saugus", "state"=>"MA", "quantity"=>"25", "ranch_dressing"=>"1", "flavors"=>["", "2"]}, "commit"=>"Place Order"}
+Unpermitted parameter: :flavors
+  [1m[36mFlavor Load (5.1ms)[0m  [1m[34mSELECT "flavors".* FROM "flavors" WHERE "flavors"."id" IS NULL[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mWingOrder Create (0.6ms)[0m  [1m[32mINSERT INTO "wing_orders" ("customer_name", "city", "state", "quantity", "ranch_dressing") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["customer_name", "Patrick Whelan"], ["city", "Saugus"], ["state", "MA"], ["quantity", 25], ["ranch_dressing", true]]
+  [1m[35m (6.3ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/wing_orders
+Completed 302 Found in 115262ms (ActiveRecord: 12.3ms)
+
+
+Started GET "/wing_orders" for 127.0.0.1 at 2019-04-17 16:32:57 -0400
+Processing by WingOrdersController#index as HTML
+  Rendering wing_orders/index.html.erb within layouts/application
+  [1m[36mWingOrder Load (0.3ms)[0m  [1m[34mSELECT "wing_orders".* FROM "wing_orders"[0m
+  [1m[36mFlavor Load (0.5ms)[0m  [1m[34mSELECT "flavors".* FROM "flavors" INNER JOIN "order_flavors" ON "flavors"."id" = "order_flavors"."flavor_id" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 1]]
+  [1m[36mFlavor Load (0.3ms)[0m  [1m[34mSELECT "flavors".* FROM "flavors" INNER JOIN "order_flavors" ON "flavors"."id" = "order_flavors"."flavor_id" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 2]]
+  [1m[36mFlavor Load (0.3ms)[0m  [1m[34mSELECT "flavors".* FROM "flavors" INNER JOIN "order_flavors" ON "flavors"."id" = "order_flavors"."flavor_id" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 3]]
+  Rendered wing_orders/index.html.erb within layouts/application (10.7ms)
+Completed 200 OK in 68ms (Views: 63.4ms | ActiveRecord: 2.9ms)
+
+
+Started GET "/wing_orders/new" for 127.0.0.1 at 2019-04-17 16:33:05 -0400
+Processing by WingOrdersController#new as HTML
+  Rendering wing_orders/new.html.erb within layouts/application
+  [1m[36mFlavor Load (0.4ms)[0m  [1m[34mSELECT "flavors".* FROM "flavors"[0m
+  Rendered wing_orders/new.html.erb within layouts/application (13.7ms)
+Completed 200 OK in 83ms (Views: 76.6ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/wing_orders" for 127.0.0.1 at 2019-04-17 16:33:16 -0400
+Processing by WingOrdersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"b16tP68Z9rYlm1Izt4AEmhxDR9el7aNB7eIuwIC6fXFhZIVctPR/ye+ac7sNQQ6xAqn8Dq/r7BJGncpypXNbcg==", "wing_order"=>{"customer_name"=>"Patrick Whelan", "city"=>"Saugus", "state"=>"MA", "quantity"=>"50", "ranch_dressing"=>"1", "flavor_ids"=>["", "1", "3"]}, "commit"=>"Place Order"}
+Unpermitted parameter: :flavor_ids
+  [1m[36mFlavor Load (0.4ms)[0m  [1m[34mSELECT "flavors".* FROM "flavors" WHERE "flavors"."id" IN ($1, $2, $3)[0m  [["id", nil], ["id", 1], ["id", 3]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mWingOrder Create (0.4ms)[0m  [1m[32mINSERT INTO "wing_orders" ("customer_name", "city", "state", "quantity", "ranch_dressing") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["customer_name", "Patrick Whelan"], ["city", "Saugus"], ["state", "MA"], ["quantity", 50], ["ranch_dressing", true]]
+  [1m[36mOrderFlavor Create (0.4ms)[0m  [1m[32mINSERT INTO "order_flavors" ("wing_order_id", "flavor_id") VALUES ($1, $2) RETURNING "id"[0m  [["wing_order_id", 4], ["flavor_id", 1]]
+  [1m[36mOrderFlavor Create (0.2ms)[0m  [1m[32mINSERT INTO "order_flavors" ("wing_order_id", "flavor_id") VALUES ($1, $2) RETURNING "id"[0m  [["wing_order_id", 4], ["flavor_id", 3]]
+  [1m[35m (4.6ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/wing_orders
+Completed 302 Found in 72858ms (ActiveRecord: 8.3ms)
+
+
+Started GET "/wing_orders" for 127.0.0.1 at 2019-04-17 16:34:29 -0400
+Processing by WingOrdersController#index as HTML
+  Rendering wing_orders/index.html.erb within layouts/application
+  [1m[36mWingOrder Load (0.5ms)[0m  [1m[34mSELECT "wing_orders".* FROM "wing_orders"[0m
+  [1m[36mFlavor Load (0.4ms)[0m  [1m[34mSELECT "flavors".* FROM "flavors" INNER JOIN "order_flavors" ON "flavors"."id" = "order_flavors"."flavor_id" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 1]]
+  [1m[36mFlavor Load (0.2ms)[0m  [1m[34mSELECT "flavors".* FROM "flavors" INNER JOIN "order_flavors" ON "flavors"."id" = "order_flavors"."flavor_id" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 2]]
+  [1m[36mFlavor Load (0.3ms)[0m  [1m[34mSELECT "flavors".* FROM "flavors" INNER JOIN "order_flavors" ON "flavors"."id" = "order_flavors"."flavor_id" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 3]]
+  [1m[36mFlavor Load (0.2ms)[0m  [1m[34mSELECT "flavors".* FROM "flavors" INNER JOIN "order_flavors" ON "flavors"."id" = "order_flavors"."flavor_id" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 4]]
+  Rendered wing_orders/index.html.erb within layouts/application (6.3ms)
+Completed 200 OK in 45ms (Views: 42.6ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/wing_orders/new" for 127.0.0.1 at 2019-04-17 16:35:13 -0400
+Processing by WingOrdersController#new as HTML
+  Rendering wing_orders/new.html.erb within layouts/application
+  [1m[36mFlavor Load (2.2ms)[0m  [1m[34mSELECT "flavors".* FROM "flavors"[0m
+  Rendered wing_orders/new.html.erb within layouts/application (11.0ms)
+Completed 200 OK in 69ms (Views: 64.1ms | ActiveRecord: 2.2ms)
+
+
+Started POST "/wing_orders" for 127.0.0.1 at 2019-04-17 16:36:19 -0400
+Processing by WingOrdersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Ya6sqpY99ZJOpEMKuma32PPpWDeqFEzH2eFx4Ay2pTpvlITJjdB87YSlYoIAp73z7QPj7qASA5RynpVSKX+DOQ==", "wing_order"=>{"customer_name"=>"Patrick Whelan", "city"=>"Saugus", "state"=>"MA", "quantity"=>"100", "ranch_dressing"=>"1", "flavor_ids"=>["", "2", "3", "4"]}, "commit"=>"Place Order"}
+Unpermitted parameter: :flavor_ids
+  [1m[36mFlavor Load (0.6ms)[0m  [1m[34mSELECT "flavors".* FROM "flavors" WHERE "flavors"."id" IN ($1, $2, $3, $4)[0m  [["id", nil], ["id", 2], ["id", 3], ["id", 4]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mWingOrder Create (0.4ms)[0m  [1m[32mINSERT INTO "wing_orders" ("customer_name", "city", "state", "quantity", "ranch_dressing") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["customer_name", "Patrick Whelan"], ["city", "Saugus"], ["state", "MA"], ["quantity", 100], ["ranch_dressing", true]]
+  [1m[36mOrderFlavor Create (0.3ms)[0m  [1m[32mINSERT INTO "order_flavors" ("wing_order_id", "flavor_id") VALUES ($1, $2) RETURNING "id"[0m  [["wing_order_id", 5], ["flavor_id", 2]]
+  [1m[36mOrderFlavor Create (0.3ms)[0m  [1m[32mINSERT INTO "order_flavors" ("wing_order_id", "flavor_id") VALUES ($1, $2) RETURNING "id"[0m  [["wing_order_id", 5], ["flavor_id", 3]]
+  [1m[36mOrderFlavor Create (0.4ms)[0m  [1m[32mINSERT INTO "order_flavors" ("wing_order_id", "flavor_id") VALUES ($1, $2) RETURNING "id"[0m  [["wing_order_id", 5], ["flavor_id", 4]]
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/wing_orders
+Completed 302 Found in 5364ms (ActiveRecord: 4.5ms)
+
+
+Started GET "/wing_orders" for 127.0.0.1 at 2019-04-17 16:36:24 -0400
+Processing by WingOrdersController#index as HTML
+  Rendering wing_orders/index.html.erb within layouts/application
+  [1m[36mWingOrder Load (0.3ms)[0m  [1m[34mSELECT "wing_orders".* FROM "wing_orders"[0m
+  [1m[36mFlavor Load (0.2ms)[0m  [1m[34mSELECT "flavors".* FROM "flavors" INNER JOIN "order_flavors" ON "flavors"."id" = "order_flavors"."flavor_id" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 1]]
+  [1m[36mFlavor Load (0.2ms)[0m  [1m[34mSELECT "flavors".* FROM "flavors" INNER JOIN "order_flavors" ON "flavors"."id" = "order_flavors"."flavor_id" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 2]]
+  [1m[36mFlavor Load (0.2ms)[0m  [1m[34mSELECT "flavors".* FROM "flavors" INNER JOIN "order_flavors" ON "flavors"."id" = "order_flavors"."flavor_id" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 3]]
+  [1m[36mFlavor Load (0.3ms)[0m  [1m[34mSELECT "flavors".* FROM "flavors" INNER JOIN "order_flavors" ON "flavors"."id" = "order_flavors"."flavor_id" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 4]]
+  [1m[36mFlavor Load (0.2ms)[0m  [1m[34mSELECT "flavors".* FROM "flavors" INNER JOIN "order_flavors" ON "flavors"."id" = "order_flavors"."flavor_id" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 5]]
+  Rendered wing_orders/index.html.erb within layouts/application (6.9ms)
+Completed 200 OK in 46ms (Views: 41.7ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/wing_orders" for 127.0.0.1 at 2019-04-17 16:42:23 -0400
+Processing by WingOrdersController#index as HTML
+  Rendering wing_orders/index.html.erb within layouts/application
+  [1m[36mWingOrder Load (0.6ms)[0m  [1m[34mSELECT "wing_orders".* FROM "wing_orders"[0m
+  [1m[36mFlavor Load (0.5ms)[0m  [1m[34mSELECT "flavors".* FROM "flavors" INNER JOIN "order_flavors" ON "flavors"."id" = "order_flavors"."flavor_id" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 1]]
+  [1m[36mFlavor Load (0.5ms)[0m  [1m[34mSELECT "flavors".* FROM "flavors" INNER JOIN "order_flavors" ON "flavors"."id" = "order_flavors"."flavor_id" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 2]]
+  [1m[36mFlavor Load (0.4ms)[0m  [1m[34mSELECT "flavors".* FROM "flavors" INNER JOIN "order_flavors" ON "flavors"."id" = "order_flavors"."flavor_id" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 3]]
+  [1m[36mFlavor Load (0.3ms)[0m  [1m[34mSELECT "flavors".* FROM "flavors" INNER JOIN "order_flavors" ON "flavors"."id" = "order_flavors"."flavor_id" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 4]]
+  [1m[36mFlavor Load (0.4ms)[0m  [1m[34mSELECT "flavors".* FROM "flavors" INNER JOIN "order_flavors" ON "flavors"."id" = "order_flavors"."flavor_id" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 5]]
+  Rendered wing_orders/index.html.erb within layouts/application (11.3ms)
+Completed 200 OK in 83ms (Views: 77.5ms | ActiveRecord: 2.9ms)
+
+
+Started GET "/wing_orders/new" for 127.0.0.1 at 2019-04-17 16:42:26 -0400
+Processing by WingOrdersController#new as HTML
+  Rendering wing_orders/new.html.erb within layouts/application
+  [1m[36mFlavor Load (0.8ms)[0m  [1m[34mSELECT "flavors".* FROM "flavors"[0m
+  Rendered wing_orders/_form.html.erb (5.2ms)
+  Rendered wing_orders/new.html.erb within layouts/application (6.4ms)
+Completed 200 OK in 55ms (Views: 51.5ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/wing_orders" for 127.0.0.1 at 2019-04-17 16:42:35 -0400
+Processing by WingOrdersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"wz01Lr9+pEc7N/fVxxVNzpe6/Qq8DD9H0yHnVjDSd5HNBx1NpJMtOPE21l191EfliVBG07YKcBR4XgPkFRtRkg==", "wing_order"=>{"customer_name"=>"Patrick Whelan", "city"=>"Saugus", "state"=>"MA", "quantity"=>"10", "ranch_dressing"=>"0", "flavor_ids"=>["", "1"]}, "commit"=>"Place Order"}
+Unpermitted parameter: :flavor_ids
+  [1m[36mFlavor Load (1.8ms)[0m  [1m[34mSELECT "flavors".* FROM "flavors" WHERE "flavors"."id" IN ($1, $2)[0m  [["id", nil], ["id", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mWingOrder Create (0.6ms)[0m  [1m[32mINSERT INTO "wing_orders" ("customer_name", "city", "state", "quantity") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["customer_name", "Patrick Whelan"], ["city", "Saugus"], ["state", "MA"], ["quantity", 10]]
+  [1m[36mOrderFlavor Create (0.5ms)[0m  [1m[32mINSERT INTO "order_flavors" ("wing_order_id", "flavor_id") VALUES ($1, $2) RETURNING "id"[0m  [["wing_order_id", 6], ["flavor_id", 1]]
+  [1m[35m (5.9ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/wing_orders
+Completed 302 Found in 7602ms (ActiveRecord: 9.0ms)
+
+
+Started GET "/wing_orders" for 127.0.0.1 at 2019-04-17 16:42:43 -0400
+Processing by WingOrdersController#index as HTML
+  Rendering wing_orders/index.html.erb within layouts/application
+  [1m[36mWingOrder Load (0.7ms)[0m  [1m[34mSELECT "wing_orders".* FROM "wing_orders"[0m
+  [1m[36mFlavor Load (0.3ms)[0m  [1m[34mSELECT "flavors".* FROM "flavors" INNER JOIN "order_flavors" ON "flavors"."id" = "order_flavors"."flavor_id" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 1]]
+  [1m[36mFlavor Load (0.2ms)[0m  [1m[34mSELECT "flavors".* FROM "flavors" INNER JOIN "order_flavors" ON "flavors"."id" = "order_flavors"."flavor_id" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 2]]
+  [1m[36mFlavor Load (0.3ms)[0m  [1m[34mSELECT "flavors".* FROM "flavors" INNER JOIN "order_flavors" ON "flavors"."id" = "order_flavors"."flavor_id" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 3]]
+  [1m[36mFlavor Load (0.5ms)[0m  [1m[34mSELECT "flavors".* FROM "flavors" INNER JOIN "order_flavors" ON "flavors"."id" = "order_flavors"."flavor_id" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 4]]
+  [1m[36mFlavor Load (0.3ms)[0m  [1m[34mSELECT "flavors".* FROM "flavors" INNER JOIN "order_flavors" ON "flavors"."id" = "order_flavors"."flavor_id" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 5]]
+  [1m[36mFlavor Load (0.5ms)[0m  [1m[34mSELECT "flavors".* FROM "flavors" INNER JOIN "order_flavors" ON "flavors"."id" = "order_flavors"."flavor_id" WHERE "order_flavors"."wing_order_id" = $1[0m  [["wing_order_id", 6]]
+  Rendered wing_orders/index.html.erb within layouts/application (12.0ms)
+Completed 200 OK in 81ms (Views: 76.3ms | ActiveRecord: 3.1ms)
+
+
+Started GET "/wing_orders/new" for 127.0.0.1 at 2019-04-17 16:42:59 -0400
+Processing by WingOrdersController#new as HTML
+  Rendering wing_orders/new.html.erb within layouts/application
+  [1m[36mFlavor Load (0.7ms)[0m  [1m[34mSELECT "flavors".* FROM "flavors"[0m
+  Rendered wing_orders/_form.html.erb (23.2ms)
+  Rendered wing_orders/new.html.erb within layouts/application (24.6ms)
+Completed 200 OK in 105ms (Views: 73.4ms | ActiveRecord: 11.9ms)
+
+
+Started POST "/wing_orders" for 127.0.0.1 at 2019-04-17 17:01:10 -0400
+Processing by WingOrdersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"MVUk51rEdDoRuzLKejmF7uu6W0sq6xzapntBLDgHqSw/bwyEQSn9Rdu6E0LA+I/F9VDgkiDtU4kNBKWeHc6PLw==", "wing_order"=>{"customer_name"=>"", "city"=>"", "state"=>"MA", "quantity"=>"", "ranch_dressing"=>"0", "flavor_ids"=>[""]}, "commit"=>"Place Order"}
+Unpermitted parameter: :flavor_ids
+  [1m[36mFlavor Load (0.8ms)[0m  [1m[34mSELECT "flavors".* FROM "flavors" WHERE "flavors"."id" IS NULL[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  Rendering wing_orders/new.html.erb within layouts/application
+  [1m[36mFlavor Load (0.5ms)[0m  [1m[34mSELECT "flavors".* FROM "flavors"[0m
+  Rendered wing_orders/_form.html.erb (11.2ms)
+  Rendered wing_orders/new.html.erb within layouts/application (12.7ms)
+Completed 200 OK in 127ms (Views: 89.2ms | ActiveRecord: 10.2ms)
+
+
